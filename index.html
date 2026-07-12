@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Space+Grotesk:wght@600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./src/styles.css?v=6" />
+    <link rel="stylesheet" href="./src/styles.css?v=7" />
     <script type="importmap">
       {
         "imports": {
@@ -29,11 +29,7 @@
         <div class="loader__logo">
           <img src="./assets/SprooGeek.svg" alt="SproogeekDev" />
         </div>
-        <div class="loader__skeleton">
-          <div class="loader__bar"></div>
-          <div class="loader__bar loader__bar--short"></div>
-          <div class="loader__bar loader__bar--medium"></div>
-        </div>
+        <pre class="loader__code" id="loaderCode" aria-hidden="true"></pre>
         <p class="loader__text" id="loaderText">проектируем</p>
         <div class="loader__progress-track">
           <div class="loader__progress-fill" id="loaderProgress"></div>
@@ -342,7 +338,7 @@
                   <img class="team-avatar__img" src="./assets/team/vladislav.jpg" alt="Владислав" loading="lazy" onerror="this.remove()" />
                   <span class="team-avatar__fallback">В</span>
                 </div>
-                <h3>Владислав</h3>
+                <h3 data-i18n="team_vlad_name">Владислав</h3>
                 <span class="team-role" data-i18n="team_vlad">Дизайнер</span>
                 <span class="team-stage">design</span>
               </div>
@@ -356,8 +352,8 @@
                   <img class="team-avatar__img" src="./assets/team/andrey.jpg" alt="Андрей" loading="lazy" onerror="this.remove()" />
                   <span class="team-avatar__fallback">А</span>
                 </div>
-                <h3>Андрей</h3>
-                <span class="team-role">CEO</span>
+                <h3 data-i18n="team_andrey_name">Андрей</h3>
+                <span class="team-role" data-i18n="team_andrey">CEO</span>
                 <span class="team-stage">manage</span>
               </div>
             </div>
@@ -370,7 +366,7 @@
                   <img class="team-avatar__img" src="./assets/team/nikita.jpg" alt="Никита" loading="lazy" onerror="this.remove()" />
                   <span class="team-avatar__fallback">Н</span>
                 </div>
-                <h3>Никита</h3>
+                <h3 data-i18n="team_nikita_name">Никита</h3>
                 <span class="team-role" data-i18n="team_nikita">Маркетолог / HR</span>
                 <span class="team-stage">marketing</span>
               </div>
@@ -384,8 +380,8 @@
                   <img class="team-avatar__img" src="./assets/team/pavel.jpg" alt="Павел" loading="lazy" onerror="this.remove()" />
                   <span class="team-avatar__fallback">П</span>
                 </div>
-                <h3>Павел</h3>
-                <span class="team-role">Backend developer</span>
+                <h3 data-i18n="team_pavel_name">Павел</h3>
+                <span class="team-role" data-i18n="team_pavel">Backend developer</span>
                 <span class="team-stage">backend</span>
               </div>
             </div>
@@ -398,8 +394,8 @@
                   <img class="team-avatar__img" src="./assets/team/prohor.jpg" alt="Прохор" loading="lazy" onerror="this.remove()" />
                   <span class="team-avatar__fallback">П</span>
                 </div>
-                <h3>Прохор</h3>
-                <span class="team-role">Frontend developer</span>
+                <h3 data-i18n="team_prohor_name">Прохор</h3>
+                <span class="team-role" data-i18n="team_prohor">Frontend developer</span>
                 <span class="team-stage">frontend</span>
               </div>
             </div>
@@ -412,8 +408,8 @@
                   <img class="team-avatar__img" src="./assets/team/stanislav.jpg" alt="Станислав" loading="lazy" onerror="this.remove()" />
                   <span class="team-avatar__fallback">С</span>
                 </div>
-                <h3>Станислав</h3>
-                <span class="team-role">C++ developer</span>
+                <h3 data-i18n="team_stanislav_name">Станислав</h3>
+                <span class="team-role" data-i18n="team_stanislav">C++ developer</span>
                 <span class="team-stage">engine</span>
               </div>
             </div>
@@ -426,7 +422,7 @@
                   <img class="team-avatar__img" src="./assets/team/ivan.jpg" alt="Иван" loading="lazy" onerror="this.remove()" />
                   <span class="team-avatar__fallback">И</span>
                 </div>
-                <h3>Иван</h3>
+                <h3 data-i18n="team_ivan_name">Иван</h3>
                 <span class="team-role" data-i18n="team_ivan">Специалист SMM</span>
                 <span class="team-stage">smm</span>
               </div>
@@ -530,6 +526,6 @@
       </div>
     </footer>
 
-    <script type="module" src="./src/main.js?v=6"></script>
+    <script type="module" src="./src/main.js?v=7"></script>
   </body>
 </html>

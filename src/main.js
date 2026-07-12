@@ -4,6 +4,13 @@ const CONTACT_EMAIL = 'info@sproogeeek.com';
 const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const LOADER_DURATION = 8000;
 const LOADER_WORDS = ['проектируем', 'building', 'тестируем', 'configuring'];
+const LOADER_CODE_SNIPPETS = [
+  'def build_funnel(product):\n    scene = Scene(product)\n    scene.render(quality="4k")\n    return ship(scene)',
+  'func Deploy(p *Project) error {\n    if err := Build(p); err != nil {\n        return err\n    }\n    return Ship(p)\n}',
+  'async def configure(order):\n    model = await load_glb(order.sku)\n    model.apply(order.options)\n    return model.preview()',
+  'type Pipeline struct {\n    Design  Stage\n    Build   Stage\n    Deploy  Stage\n}\n\npipe := Pipeline{}.Run()',
+  'class Renderer:\n    def __init__(self, gpu=True):\n        self.gpu = gpu\n\n    def frame(self, scene):\n        return scene.rasterize()',
+];
 
 const EN = {
   nav_services: 'Services',
@@ -68,8 +75,19 @@ const EN = {
   flow_6: 'Production',
   team_title: 'The team that builds the product.',
   team_lead: 'Each member is a node in our pipeline. Together we design, develop and ship products.',
+  team_vlad_name: 'Vladislav',
   team_vlad: 'Designer',
+  team_andrey_name: 'Andrey',
+  team_andrey: 'CEO',
+  team_nikita_name: 'Nikita',
   team_nikita: 'Marketing / HR',
+  team_pavel_name: 'Pavel',
+  team_pavel: 'Backend developer',
+  team_prohor_name: 'Prokhor',
+  team_prohor: 'Frontend developer',
+  team_stanislav_name: 'Stanislav',
+  team_stanislav: 'C++ developer',
+  team_ivan_name: 'Ivan',
   team_ivan: 'SMM Specialist',
   process_title: 'We work in short engineering iterations.',
   p1_title: 'Goal analysis',
@@ -98,6 +116,7 @@ const originalTexts = new Map();
 
 function init() {
   setupLoader();
+  setupLoaderCode();
   setupReveal();
   setupCursorLight();
   setupTilt();
@@ -142,6 +161,35 @@ function setupLoader() {
     document.body.classList.remove('is-loading');
     setTimeout(() => loader.remove(), 700);
   }, LOADER_DURATION);
+}
+
+function setupLoaderCode() {
+  const el = document.getElementById('loaderCode');
+  if (!el) return;
+
+  const pickSnippet = () => LOADER_CODE_SNIPPETS[Math.floor(Math.random() * LOADER_CODE_SNIPPETS.length)];
+
+  const typeSnippet = (text, onDone) => {
+    let index = 0;
+    const tick = () => {
+      if (!el.isConnected) return; // loader removed → stop timers
+      el.textContent = text.slice(0, index);
+      index += 1;
+      if (index <= text.length) {
+        setTimeout(tick, 22 + Math.random() * 46);
+      } else {
+        setTimeout(onDone, 1100);
+      }
+    };
+    tick();
+  };
+
+  const loop = () => {
+    if (!el.isConnected) return;
+    typeSnippet(pickSnippet(), loop);
+  };
+
+  loop();
 }
 
 function setupReveal() {
