@@ -3,7 +3,7 @@ import * as THREE from 'three';
 const CONTACT_EMAIL = 'info@sproogeeek.com';
 const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const LOADER_DURATION = 8000;
-const LOADER_WORDS = ['проектируем', 'собираем', 'тестируем', 'настраиваем'];
+const LOADER_WORDS = ['проектируем', 'building', 'тестируем', 'configuring'];
 
 const EN = {
   nav_services: 'Services',

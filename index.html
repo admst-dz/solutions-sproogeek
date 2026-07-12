@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Space+Grotesk:wght@600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./src/styles.css?v=2" />
+    <link rel="stylesheet" href="./src/styles.css?v=6" />
     <script type="importmap">
       {
         "imports": {
@@ -106,7 +106,7 @@
         </div>
       </section>
 
-      <section class="section" id="services">
+      <section class="section section--photo services-section" id="services">
         <div class="wrap">
           <div class="section-head reveal">
             <p class="eyebrow">Services</p>
@@ -259,7 +259,7 @@
         </div>
       </section>
 
-      <section class="section architecture-section" id="architecture">
+      <section class="section section--photo architecture-section" id="architecture">
         <div class="wrap">
           <div class="section-head reveal">
             <p class="eyebrow">Architecture</p>
@@ -323,7 +323,7 @@
         </div>
       </section>
 
-      <section class="section team-section" id="team">
+      <section class="section section--photo team-section" id="team">
         <div class="wrap">
           <div class="section-head reveal">
             <p class="eyebrow">Team</p>
@@ -338,7 +338,10 @@
               <div class="team-node__connector" aria-hidden="true"></div>
               <div class="team-node__dot" aria-hidden="true"></div>
               <div class="card team-card tilt">
-                <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #667eea, #764ba2)">В</div>
+                <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #667eea, #764ba2)">
+                  <img class="team-avatar__img" src="./assets/team/vladislav.jpg" alt="Владислав" loading="lazy" onerror="this.remove()" />
+                  <span class="team-avatar__fallback">В</span>
+                </div>
                 <h3>Владислав</h3>
                 <span class="team-role" data-i18n="team_vlad">Дизайнер</span>
                 <span class="team-stage">design</span>
@@ -349,7 +352,10 @@
               <div class="team-node__connector" aria-hidden="true"></div>
               <div class="team-node__dot" aria-hidden="true"></div>
               <div class="card team-card tilt">
-                <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #40f0c7, #4b8dff)">А</div>
+                <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #40f0c7, #4b8dff)">
+                  <img class="team-avatar__img" src="./assets/team/andrey.jpg" alt="Андрей" loading="lazy" onerror="this.remove()" />
+                  <span class="team-avatar__fallback">А</span>
+                </div>
                 <h3>Андрей</h3>
                 <span class="team-role">CEO</span>
                 <span class="team-stage">manage</span>
@@ -360,7 +366,10 @@
               <div class="team-node__connector" aria-hidden="true"></div>
               <div class="team-node__dot" aria-hidden="true"></div>
               <div class="card team-card tilt">
-                <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #f8c46a, #ff8a3d)">Н</div>
+                <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #f8c46a, #ff8a3d)">
+                  <img class="team-avatar__img" src="./assets/team/nikita.jpg" alt="Никита" loading="lazy" onerror="this.remove()" />
+                  <span class="team-avatar__fallback">Н</span>
+                </div>
                 <h3>Никита</h3>
                 <span class="team-role" data-i18n="team_nikita">Маркетолог / HR</span>
                 <span class="team-stage">marketing</span>
@@ -371,7 +380,10 @@
               <div class="team-node__connector" aria-hidden="true"></div>
               <div class="team-node__dot" aria-hidden="true"></div>
               <div class="card team-card tilt">
-                <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #4b8dff, #667eea)">П</div>
+                <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #4b8dff, #667eea)">
+                  <img class="team-avatar__img" src="./assets/team/pavel.jpg" alt="Павел" loading="lazy" onerror="this.remove()" />
+                  <span class="team-avatar__fallback">П</span>
+                </div>
                 <h3>Павел</h3>
                 <span class="team-role">Backend developer</span>
                 <span class="team-stage">backend</span>
@@ -382,7 +394,10 @@
               <div class="team-node__connector" aria-hidden="true"></div>
               <div class="team-node__dot" aria-hidden="true"></div>
               <div class="card team-card tilt">
-                <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #ff5c9f, #ff8a3d)">П</div>
+                <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #ff5c9f, #ff8a3d)">
+                  <img class="team-avatar__img" src="./assets/team/prohor.jpg" alt="Прохор" loading="lazy" onerror="this.remove()" />
+                  <span class="team-avatar__fallback">П</span>
+                </div>
                 <h3>Прохор</h3>
                 <span class="team-role">Frontend developer</span>
                 <span class="team-stage">frontend</span>
@@ -393,7 +408,10 @@
               <div class="team-node__connector" aria-hidden="true"></div>
               <div class="team-node__dot" aria-hidden="true"></div>
               <div class="card team-card tilt">
-                <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #36d1dc, #5b86e5)">С</div>
+                <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #36d1dc, #5b86e5)">
+                  <img class="team-avatar__img" src="./assets/team/stanislav.jpg" alt="Станислав" loading="lazy" onerror="this.remove()" />
+                  <span class="team-avatar__fallback">С</span>
+                </div>
                 <h3>Станислав</h3>
                 <span class="team-role">C++ developer</span>
                 <span class="team-stage">engine</span>
@@ -404,7 +422,10 @@
               <div class="team-node__connector" aria-hidden="true"></div>
               <div class="team-node__dot" aria-hidden="true"></div>
               <div class="card team-card tilt">
-                <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #11998e, #40f0c7)">И</div>
+                <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #11998e, #40f0c7)">
+                  <img class="team-avatar__img" src="./assets/team/ivan.jpg" alt="Иван" loading="lazy" onerror="this.remove()" />
+                  <span class="team-avatar__fallback">И</span>
+                </div>
                 <h3>Иван</h3>
                 <span class="team-role" data-i18n="team_ivan">Специалист SMM</span>
                 <span class="team-stage">smm</span>
@@ -509,6 +530,6 @@
       </div>
     </footer>
 
-    <script type="module" src="./src/main.js?v=2"></script>
+    <script type="module" src="./src/main.js?v=6"></script>
   </body>
 </html>
