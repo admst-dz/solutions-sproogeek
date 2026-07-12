@@ -55,10 +55,6 @@ body.is-locked {
   overflow: hidden;
 }
 
-body.is-loading {
-  overflow: hidden;
-}
-
 a {
   color: inherit;
   text-decoration: none;
@@ -85,12 +81,34 @@ textarea {
   place-items: center;
   background: var(--bg);
   transition: opacity 600ms ease, visibility 600ms ease;
+  /* Failsafe: hide even if main.js never runs (e.g. stale/broken asset on prod). */
+  animation: loaderFailsafe 600ms ease 9200ms forwards;
 }
 
 .loader.is-hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+}
+
+@keyframes loaderFailsafe {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+/* Failsafe: release scroll lock even if main.js never removes the class. */
+body.is-loading {
+  overflow: hidden;
+  animation: bodyUnlockFailsafe 1ms linear 9200ms forwards;
+}
+
+@keyframes bodyUnlockFailsafe {
+  to {
+    overflow: auto;
+  }
 }
 
 .loader__content {
