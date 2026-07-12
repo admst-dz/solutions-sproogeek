@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="dev Sproogeek - digital product studio: сайты, 3D-конфигураторы, backend и микросервисная инфраструктура для продаж."
+      content="SproogeekDev - digital product studio: сайты, 3D-конфигураторы, backend и микросервисная инфраструктура для продаж."
     />
-    <title>dev Sproogeek - Digital Product Studio</title>
+    <title>SproogeekDev - Digital Product Studio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -23,61 +23,83 @@
       }
     </script>
   </head>
-  <body>
+  <body class="is-loading">
+    <div class="loader" id="loader">
+      <div class="loader__content">
+        <div class="loader__logo">
+          <img src="./assets/SprooGeek.svg" alt="SproogeekDev" />
+        </div>
+        <div class="loader__skeleton">
+          <div class="loader__bar"></div>
+          <div class="loader__bar loader__bar--short"></div>
+          <div class="loader__bar loader__bar--medium"></div>
+        </div>
+        <p class="loader__text" id="loaderText">проектируем</p>
+        <div class="loader__progress-track">
+          <div class="loader__progress-fill" id="loaderProgress"></div>
+        </div>
+      </div>
+    </div>
+
     <canvas id="spaceScene" aria-hidden="true"></canvas>
     <div class="noise" aria-hidden="true"></div>
     <div class="cursor-light" id="cursorLight" aria-hidden="true"></div>
 
     <header class="topbar">
-      <a class="brand" href="#hero" aria-label="dev Sproogeek">
+      <a class="brand" href="#hero" aria-label="SproogeekDev">
         <span class="brand__mark"><img src="./assets/SprooGeek.svg" alt="" /></span>
-        <span>dev <b>Sproogeek</b></span>
+        <span><b>Sproogeek</b>Dev</span>
       </a>
       <nav class="nav" aria-label="Главная навигация">
-        <a href="#services">Услуги</a>
-        <a href="#case">Кейс</a>
-        <a href="#architecture">Архитектура</a>
-        <a href="#process">Процесс</a>
-        <a href="#contact">Контакт</a>
+        <a href="#services" data-i18n="nav_services">Услуги</a>
+        <a href="#case" data-i18n="nav_case">Кейс</a>
+        <a href="#architecture" data-i18n="nav_architecture">Архитектура</a>
+        <a href="#team" data-i18n="nav_team">Команда</a>
+        <a href="#process" data-i18n="nav_process">Процесс</a>
+        <a href="#contact" data-i18n="nav_contact">Контакт</a>
       </nav>
-      <a class="nav-cta" href="#contact">Обсудить проект</a>
+      <div class="topbar__actions">
+        <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch to English">EN</button>
+        <a class="nav-cta" href="#contact" data-i18n="nav_cta">Обсудить проект</a>
+      </div>
       <button class="menu-button" id="menuButton" type="button" aria-label="Открыть меню" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </header>
 
     <aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
-      <a href="#services">Услуги</a>
-      <a href="#case">Кейс</a>
-      <a href="#architecture">Архитектура</a>
-      <a href="#process">Процесс</a>
-      <a href="#contact">Контакт</a>
+      <a href="#services" data-i18n="nav_services">Услуги</a>
+      <a href="#case" data-i18n="nav_case">Кейс</a>
+      <a href="#architecture" data-i18n="nav_architecture">Архитектура</a>
+      <a href="#team" data-i18n="nav_team">Команда</a>
+      <a href="#process" data-i18n="nav_process">Процесс</a>
+      <a href="#contact" data-i18n="nav_contact">Контакт</a>
     </aside>
 
     <main>
       <section class="hero section" id="hero">
         <div class="wrap hero__grid">
           <div class="hero__content reveal is-visible">
-            <p class="kicker">Digital product studio / web, 3D, backend</p>
-            <h1>Собираем сайты, продукты и 3D-воронки для продаж.</h1>
-            <p class="lead">
-              dev Sproogeek проектирует сайты и визуальные конфигураторы, где
+            <p class="kicker" data-i18n="hero_kicker">Digital product studio / web, 3D, backend</p>
+            <h1 data-i18n="hero_title">Собираем сайты, продукты и 3D-воронки для продаж.</h1>
+            <p class="lead" data-i18n="hero_lead">
+              SproogeekDev проектирует сайты и визуальные конфигураторы, где
               покупатель видит продукт до заказа, а команда получает понятную операционную систему.
             </p>
             <div class="hero__actions">
-              <a class="button button--primary" href="#case">Смотреть кейс</a>
-              <a class="button button--secondary" href="#services">Что делаем</a>
+              <a class="button button--primary" href="#case" data-i18n="hero_cta1">Смотреть кейс</a>
+              <a class="button button--secondary" href="#services" data-i18n="hero_cta2">Что делаем</a>
             </div>
           </div>
           <div class="hero__panel reveal is-visible delay-1">
             <div class="signal-card tilt">
               <span class="signal-card__label">Live stack</span>
               <strong>React + Three.js + FastAPI</strong>
-              <p>От эффектной витрины до микросервисов рендера, PDF-техкарт и заказов.</p>
+              <p data-i18n="hero_stack_desc">От эффектной витрины до микросервисов рендера, PDF-техкарт и заказов.</p>
               <div class="signal-card__metrics">
-                <span><b>3D</b> в браузере</span>
-                <span><b>SSR</b> рендеры</span>
-                <span><b>CRM</b> роли</span>
+                <span><b>3D</b> <span data-i18n="metric_3d">в браузере</span></span>
+                <span><b>SSR</b> <span data-i18n="metric_ssr">рендеры</span></span>
+                <span><b>CRM</b> <span data-i18n="metric_crm">роли</span></span>
               </div>
             </div>
           </div>
@@ -88,8 +110,8 @@
         <div class="wrap">
           <div class="section-head reveal">
             <p class="eyebrow">Services</p>
-            <h2>Закрываем весь путь от идеи до production.</h2>
-            <p class="lead">
+            <h2 data-i18n="services_title">Закрываем весь путь от идеи до production.</h2>
+            <p class="lead" data-i18n="services_lead">
               Берем на себя продуктовую структуру, интерфейсы, API, 3D-визуализацию и запуск,
               сохраняя архитектуру понятной для дальнейшей поддержки.
             </p>
@@ -97,42 +119,84 @@
 
           <div class="service-grid">
             <article class="card service-card reveal tilt">
+              <div class="service-card__icon">
+                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="4" y="8" width="40" height="28" rx="4" stroke="var(--mint)" stroke-width="1.5"/>
+                  <line x1="4" y1="16" x2="44" y2="16" stroke="var(--mint)" stroke-width="1.5" opacity="0.5"/>
+                  <circle cx="10" cy="12" r="1.5" fill="#ff5c9f"/><circle cx="15" cy="12" r="1.5" fill="#f8c46a"/><circle cx="20" cy="12" r="1.5" fill="#40f0c7"/>
+                  <rect x="10" y="22" width="16" height="2" rx="1" fill="var(--mint)" opacity="0.4"/>
+                  <rect x="10" y="27" width="24" height="2" rx="1" fill="var(--mint)" opacity="0.25"/>
+                  <rect x="10" y="32" width="10" height="2" rx="1" fill="var(--mint)" opacity="0.15"/>
+                </svg>
+              </div>
               <span class="card-index">01</span>
-              <h3>Сайты и продуктовые лендинги</h3>
-              <p>Быстрые витрины с сильной подачей, адаптивом, SEO-основой и анимациями без перегруза.</p>
+              <h3 data-i18n="s1_title">Сайты и продуктовые лендинги</h3>
+              <p data-i18n="s1_desc">Быстрые витрины с сильной подачей, адаптивом, SEO-основой и анимациями без перегруза.</p>
             </article>
             <article class="card service-card reveal delay-1 tilt">
+              <div class="service-card__icon">
+                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M24 6L42 16V32L24 42L6 32V16L24 6Z" stroke="var(--mint)" stroke-width="1.5"/>
+                  <path d="M24 6L24 42" stroke="var(--mint)" stroke-width="1" opacity="0.3"/>
+                  <path d="M6 16L42 32" stroke="var(--mint)" stroke-width="1" opacity="0.2"/>
+                  <path d="M42 16L6 32" stroke="var(--mint)" stroke-width="1" opacity="0.2"/>
+                  <circle cx="24" cy="24" r="3" fill="var(--mint)" opacity="0.3"/>
+                </svg>
+              </div>
               <span class="card-index">02</span>
-              <h3>3D-конфигураторы</h3>
-              <p>Three.js, R3F, загрузка моделей, брендирование, цвета, материалы и подготовка заказа.</p>
+              <h3 data-i18n="s2_title">3D-конфигураторы</h3>
+              <p data-i18n="s2_desc">Three.js, R3F, загрузка моделей, брендирование, цвета, материалы и подготовка заказа.</p>
             </article>
             <article class="card service-card reveal delay-2 tilt">
+              <div class="service-card__icon">
+                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="12" y="4" width="24" height="40" rx="3" stroke="var(--mint)" stroke-width="1.5"/>
+                  <line x1="12" y1="12" x2="36" y2="12" stroke="var(--mint)" stroke-width="1" opacity="0.3"/>
+                  <line x1="12" y1="36" x2="36" y2="36" stroke="var(--mint)" stroke-width="1" opacity="0.3"/>
+                  <circle cx="18" cy="8" r="1" fill="var(--mint)" opacity="0.5"/><circle cx="22" cy="8" r="1" fill="#4b8dff" opacity="0.5"/>
+                  <rect x="16" y="16" width="16" height="2" rx="1" fill="var(--mint)" opacity="0.4"/>
+                  <rect x="16" y="20" width="12" height="2" rx="1" fill="#4b8dff" opacity="0.3"/>
+                  <rect x="16" y="24" width="14" height="2" rx="1" fill="var(--mint)" opacity="0.2"/>
+                  <rect x="16" y="28" width="10" height="2" rx="1" fill="#4b8dff" opacity="0.15"/>
+                </svg>
+              </div>
               <span class="card-index">03</span>
-              <h3>Backend и интеграции</h3>
-              <p>FastAPI, PostgreSQL, роли, платежные и CRM-интеграции, события и фоновые задачи.</p>
+              <h3 data-i18n="s3_title">Backend и интеграции</h3>
+              <p data-i18n="s3_desc">FastAPI, PostgreSQL, роли, платежные и CRM-интеграции, события и фоновые задачи.</p>
             </article>
             <article class="card service-card reveal delay-3 tilt">
+              <div class="service-card__icon">
+                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="24" cy="24" r="18" stroke="var(--mint)" stroke-width="1.5" stroke-dasharray="4 3"/>
+                  <circle cx="24" cy="24" r="8" stroke="var(--mint)" stroke-width="1" opacity="0.4"/>
+                  <path d="M24 6V12" stroke="var(--mint)" stroke-width="1.5"/>
+                  <path d="M24 36V42" stroke="var(--mint)" stroke-width="1.5"/>
+                  <path d="M6 24H12" stroke="var(--mint)" stroke-width="1.5"/>
+                  <path d="M36 24H42" stroke="var(--mint)" stroke-width="1.5"/>
+                  <circle cx="24" cy="24" r="2" fill="var(--mint)"/>
+                </svg>
+              </div>
               <span class="card-index">04</span>
-              <h3>DevOps и поддержка</h3>
-              <p>Docker, reverse proxy, CI/CD, мониторинг и аккуратный релизный процесс.</p>
+              <h3 data-i18n="s4_title">DevOps и поддержка</h3>
+              <p data-i18n="s4_desc">Docker, reverse proxy, CI/CD, мониторинг и аккуратный релизный процесс.</p>
             </article>
           </div>
 
           <div class="deliverables-grid">
             <article class="card deliverable-card reveal">
               <span>Strategy</span>
-              <h3>Что уточнить перед стартом</h3>
-              <p>Цель страницы, аудитория, оффер, 3-5 ключевых преимуществ, примеры конкурентов и желаемое действие пользователя.</p>
+              <h3 data-i18n="del1_title">Что уточнить перед стартом</h3>
+              <p data-i18n="del1_desc">Цель страницы, аудитория, оффер, 3-5 ключевых преимуществ, примеры конкурентов и желаемое действие пользователя.</p>
             </article>
             <article class="card deliverable-card reveal delay-1">
               <span>Content</span>
-              <h3>Что заменить своими данными</h3>
-              <p>Названия услуг, реальные кейсы, цифры результата, стек технологий, контакты, ссылки на проекты и текст формы.</p>
+              <h3 data-i18n="del2_title">Что заменить своими данными</h3>
+              <p data-i18n="del2_desc">Названия услуг, реальные кейсы, цифры результата, стек технологий, контакты, ссылки на проекты и текст формы.</p>
             </article>
             <article class="card deliverable-card reveal delay-2">
               <span>Launch</span>
-              <h3>Что будет на выходе</h3>
-              <p>Лендинг, адаптив, 3D/анимации, базовая SEO-разметка, локальный запуск и структура для дальнейшего редактирования.</p>
+              <h3 data-i18n="del3_title">Что будет на выходе</h3>
+              <p data-i18n="del3_desc">Лендинг, адаптив, 3D/анимации, базовая SEO-разметка, локальный запуск и структура для дальнейшего редактирования.</p>
             </article>
           </div>
         </div>
@@ -142,8 +206,8 @@
         <div class="wrap case-grid">
           <div class="case-copy reveal">
             <p class="eyebrow">Real case</p>
-            <h2>Sproogeek 3D Configurator</h2>
-            <p class="lead">
+            <h2 data-i18n="case_title">Sproogeek 3D Configurator</h2>
+            <p class="lead" data-i18n="case_lead">
               B2B2C-сайт продаж сувенирной и полиграфической продукции: ежедневники, скетчбуки,
               термосы и powerbank с кастомизацией прямо в браузере.
             </p>
@@ -172,22 +236,22 @@
 
         <div class="wrap case-detail-grid">
           <article class="card detail-card reveal">
-            <h3>Задача</h3>
-            <p>
+            <h3 data-i18n="case_task_title">Задача</h3>
+            <p data-i18n="case_task_desc">
               Убрать долгие согласования макетов между клиентом, дилером и производством: клиент
               собирает продукт, видит 3D-превью и отправляет заказ без ручной переписки.
             </p>
           </article>
           <article class="card detail-card reveal delay-1">
-            <h3>Решение</h3>
-            <p>
+            <h3 data-i18n="case_solution_title">Решение</h3>
+            <p data-i18n="case_solution_desc">
               В проекте связаны клиентский конфигуратор, роли пользователей, API заказов,
               headless-render PNG и генерация технологических PDF-карт для типографии.
             </p>
           </article>
           <article class="card detail-card reveal delay-2">
-            <h3>Результат</h3>
-            <p>
+            <h3 data-i18n="case_result_title">Результат</h3>
+            <p data-i18n="case_result_desc">
               MVP с реальными продуктовыми сценариями: выбор параметров, логотипы, рендеры,
               кабинет клиента, дилерская панель и основа для масштабирования.
             </p>
@@ -199,8 +263,8 @@
         <div class="wrap">
           <div class="section-head reveal">
             <p class="eyebrow">Architecture</p>
-            <h2>Как устроен проект, который можно масштабировать.</h2>
-            <p class="lead">
+            <h2 data-i18n="arch_title">Как устроен проект, который можно масштабировать.</h2>
+            <p class="lead" data-i18n="arch_lead">
               Ниже структура для реального кейса или будущего продукта. Заменишь названия сервисов,
               стек и поток данных на свои - секция уже готова как техническая витрина.
             </p>
@@ -209,75 +273,153 @@
           <div class="architecture-map">
             <article class="card architecture-node reveal">
               <span>01 / Client</span>
-              <h3>Frontend</h3>
-              <p>Витрина, конфигуратор, личный кабинет, загрузка логотипов, выбор параметров и оформление заявки.</p>
-              <ul>
-                <li>React / Vite</li>
-                <li>State management</li>
-                <li>Responsive UI</li>
-              </ul>
+              <h3 data-i18n="arch_n1_title">Frontend</h3>
+              <p data-i18n="arch_n1_desc">Витрина, конфигуратор, личный кабинет, загрузка логотипов, выбор параметров и оформление заявки.</p>
+              <ul><li>React / Vite</li><li>State management</li><li>Responsive UI</li></ul>
             </article>
             <article class="card architecture-node reveal delay-1">
               <span>02 / Visual</span>
-              <h3>3D Engine</h3>
-              <p>Загрузка `.glb` моделей, материалы, цвета, брендирование и визуальное подтверждение результата.</p>
-              <ul>
-                <li>Three.js</li>
-                <li>GLTF assets</li>
-                <li>Realtime preview</li>
-              </ul>
+              <h3 data-i18n="arch_n2_title">3D Engine</h3>
+              <p data-i18n="arch_n2_desc">Загрузка `.glb` моделей, материалы, цвета, брендирование и визуальное подтверждение результата.</p>
+              <ul><li>Three.js</li><li>GLTF assets</li><li>Realtime preview</li></ul>
             </article>
             <article class="card architecture-node reveal delay-2">
               <span>03 / API</span>
-              <h3>Backend</h3>
-              <p>Пользователи, роли, продукты, заказы, цены, статусы, валидация входящих данных и безопасность.</p>
-              <ul>
-                <li>FastAPI</li>
-                <li>PostgreSQL</li>
-                <li>JWT / OAuth</li>
-              </ul>
+              <h3 data-i18n="arch_n3_title">Backend</h3>
+              <p data-i18n="arch_n3_desc">Пользователи, роли, продукты, заказы, цены, статусы, валидация входящих данных и безопасность.</p>
+              <ul><li>FastAPI</li><li>PostgreSQL</li><li>JWT / OAuth</li></ul>
             </article>
             <article class="card architecture-node reveal">
               <span>04 / Workers</span>
-              <h3>Render & PDF</h3>
-              <p>Фоновые сервисы создают PNG-рендеры 3D-сцены и технологические PDF-документы для производства.</p>
-              <ul>
-                <li>Puppeteer</li>
-                <li>Headless WebGL</li>
-                <li>PDF generator</li>
-              </ul>
+              <h3 data-i18n="arch_n4_title">Render & PDF</h3>
+              <p data-i18n="arch_n4_desc">Фоновые сервисы создают PNG-рендеры 3D-сцены и технологические PDF-документы для производства.</p>
+              <ul><li>Puppeteer</li><li>Headless WebGL</li><li>PDF generator</li></ul>
             </article>
             <article class="card architecture-node reveal delay-1">
               <span>05 / Events</span>
-              <h3>Data Flow</h3>
-              <p>События заказа проходят через API, очередь задач, логирование, хранение файлов и уведомления.</p>
-              <ul>
-                <li>Kafka / jobs</li>
-                <li>CSV / audit logs</li>
-                <li>Uploads storage</li>
-              </ul>
+              <h3 data-i18n="arch_n5_title">Data Flow</h3>
+              <p data-i18n="arch_n5_desc">События заказа проходят через API, очередь задач, логирование, хранение файлов и уведомления.</p>
+              <ul><li>Kafka / jobs</li><li>CSV / audit logs</li><li>Uploads storage</li></ul>
             </article>
             <article class="card architecture-node reveal delay-2">
               <span>06 / Ops</span>
-              <h3>Infrastructure</h3>
-              <p>Контейнеризация, reverse proxy, SSL, CI/CD и наблюдаемость для спокойного production-запуска.</p>
-              <ul>
-                <li>Docker</li>
-                <li>Traefik</li>
-                <li>GitHub Actions</li>
-              </ul>
+              <h3 data-i18n="arch_n6_title">Infrastructure</h3>
+              <p data-i18n="arch_n6_desc">Контейнеризация, reverse proxy, SSL, CI/CD и наблюдаемость для спокойного production-запуска.</p>
+              <ul><li>Docker</li><li>Traefik</li><li>GitHub Actions</li></ul>
             </article>
           </div>
 
           <div class="card architecture-flow reveal">
             <span class="flow-label">Order flow</span>
             <div class="flow-steps">
-              <span>Клиент</span>
-              <span>3D-конфиг</span>
-              <span>API заказа</span>
-              <span>Рендер</span>
-              <span>PDF-техкарта</span>
-              <span>Производство</span>
+              <span data-i18n="flow_1">Клиент</span>
+              <span data-i18n="flow_2">3D-конфиг</span>
+              <span data-i18n="flow_3">API заказа</span>
+              <span data-i18n="flow_4">Рендер</span>
+              <span data-i18n="flow_5">PDF-техкарта</span>
+              <span data-i18n="flow_6">Производство</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section team-section" id="team">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <p class="eyebrow">Team</p>
+            <h2 data-i18n="team_title">Команда, которая собирает продукт.</h2>
+            <p class="lead" data-i18n="team_lead">Каждый участник — узел в нашем пайплайне. Вместе мы проектируем, разрабатываем и выпускаем продукты.</p>
+          </div>
+
+          <div class="team-pipeline">
+            <div class="team-pipeline__line" aria-hidden="true"></div>
+
+            <div class="team-node reveal" style="--node-offset: -54px">
+              <div class="team-node__connector" aria-hidden="true"></div>
+              <div class="team-node__dot" aria-hidden="true"></div>
+              <div class="card team-card tilt">
+                <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #667eea, #764ba2)">В</div>
+                <h3>Владислав</h3>
+                <span class="team-role" data-i18n="team_vlad">Дизайнер</span>
+                <span class="team-stage">design</span>
+              </div>
+            </div>
+
+            <div class="team-node reveal delay-1" style="--node-offset: 54px">
+              <div class="team-node__connector" aria-hidden="true"></div>
+              <div class="team-node__dot" aria-hidden="true"></div>
+              <div class="card team-card tilt">
+                <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #40f0c7, #4b8dff)">А</div>
+                <h3>Андрей</h3>
+                <span class="team-role">CEO</span>
+                <span class="team-stage">manage</span>
+              </div>
+            </div>
+
+            <div class="team-node reveal delay-2" style="--node-offset: -54px">
+              <div class="team-node__connector" aria-hidden="true"></div>
+              <div class="team-node__dot" aria-hidden="true"></div>
+              <div class="card team-card tilt">
+                <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #f8c46a, #ff8a3d)">Н</div>
+                <h3>Никита</h3>
+                <span class="team-role" data-i18n="team_nikita">Маркетолог / HR</span>
+                <span class="team-stage">marketing</span>
+              </div>
+            </div>
+
+            <div class="team-node reveal delay-3" style="--node-offset: 54px">
+              <div class="team-node__connector" aria-hidden="true"></div>
+              <div class="team-node__dot" aria-hidden="true"></div>
+              <div class="card team-card tilt">
+                <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #4b8dff, #667eea)">П</div>
+                <h3>Павел</h3>
+                <span class="team-role">Backend developer</span>
+                <span class="team-stage">backend</span>
+              </div>
+            </div>
+
+            <div class="team-node reveal" style="--node-offset: -54px">
+              <div class="team-node__connector" aria-hidden="true"></div>
+              <div class="team-node__dot" aria-hidden="true"></div>
+              <div class="card team-card tilt">
+                <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #ff5c9f, #ff8a3d)">П</div>
+                <h3>Прохор</h3>
+                <span class="team-role">Frontend developer</span>
+                <span class="team-stage">frontend</span>
+              </div>
+            </div>
+
+            <div class="team-node reveal delay-1" style="--node-offset: 54px">
+              <div class="team-node__connector" aria-hidden="true"></div>
+              <div class="team-node__dot" aria-hidden="true"></div>
+              <div class="card team-card tilt">
+                <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #36d1dc, #5b86e5)">С</div>
+                <h3>Станислав</h3>
+                <span class="team-role">C++ developer</span>
+                <span class="team-stage">engine</span>
+              </div>
+            </div>
+
+            <div class="team-node reveal delay-2" style="--node-offset: -54px">
+              <div class="team-node__connector" aria-hidden="true"></div>
+              <div class="team-node__dot" aria-hidden="true"></div>
+              <div class="card team-card tilt">
+                <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #11998e, #40f0c7)">И</div>
+                <h3>Иван</h3>
+                <span class="team-role" data-i18n="team_ivan">Специалист SMM</span>
+                <span class="team-stage">smm</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card team-flow reveal">
+            <span class="flow-label">Team pipeline</span>
+            <div class="team-flow__stages">
+              <span>Design</span>
+              <span>Plan</span>
+              <span>Develop</span>
+              <span>Test</span>
+              <span>Deploy</span>
             </div>
           </div>
         </div>
@@ -287,28 +429,28 @@
         <div class="wrap">
           <div class="section-head reveal">
             <p class="eyebrow">Process</p>
-            <h2>Работаем короткими инженерными итерациями.</h2>
+            <h2 data-i18n="process_title">Работаем короткими инженерными итерациями.</h2>
           </div>
           <div class="steps">
             <article class="step reveal">
               <span>01</span>
-              <h3>Разбор цели</h3>
-              <p>Фиксируем аудиторию, воронку, ограничения, данные и критерии готовности.</p>
+              <h3 data-i18n="p1_title">Разбор цели</h3>
+              <p data-i18n="p1_desc">Фиксируем аудиторию, воронку, ограничения, данные и критерии готовности.</p>
             </article>
             <article class="step reveal delay-1">
               <span>02</span>
-              <h3>Архитектура</h3>
-              <p>Делим UI, бизнес-логику, API и фоновые задачи так, чтобы проект было легко тестировать.</p>
+              <h3 data-i18n="p2_title">Архитектура</h3>
+              <p data-i18n="p2_desc">Делим UI, бизнес-логику, API и фоновые задачи так, чтобы проект было легко тестировать.</p>
             </article>
             <article class="step reveal delay-2">
               <span>03</span>
-              <h3>Дизайн и код</h3>
-              <p>Собираем интерфейс, интерактив и backend с регулярными демо вместо туманных обещаний.</p>
+              <h3 data-i18n="p3_title">Дизайн и код</h3>
+              <p data-i18n="p3_desc">Собираем интерфейс, интерактив и backend с регулярными демо вместо туманных обещаний.</p>
             </article>
             <article class="step reveal delay-3">
               <span>04</span>
-              <h3>Запуск</h3>
-              <p>Проверяем адаптив, производительность, ошибки, деплой и поддержку после релиза.</p>
+              <h3 data-i18n="p4_title">Запуск</h3>
+              <p data-i18n="p4_desc">Проверяем адаптив, производительность, ошибки, деплой и поддержку после релиза.</p>
             </article>
           </div>
         </div>
@@ -318,29 +460,29 @@
         <div class="wrap contact-grid">
           <div class="reveal">
             <p class="eyebrow">Contact</p>
-            <h2>Давайте соберем проект, который можно показать рынку.</h2>
-            <p class="lead">
+            <h2 data-i18n="contact_title">Давайте соберем проект, который можно показать рынку.</h2>
+            <p class="lead" data-i18n="contact_lead">
               Опишите задачу, формат продукта и желаемый срок. Ответим с понятным следующим шагом.
             </p>
           </div>
           <form class="card contact-form reveal delay-1" id="contactForm">
             <label>
-              <span>Имя</span>
+              <span data-i18n="form_name">Имя</span>
               <input name="name" type="text" autocomplete="name" required />
             </label>
             <label>
-              <span>Email</span>
+              <span data-i18n="form_email">Email</span>
               <input name="email" type="email" autocomplete="email" required />
             </label>
             <label>
-              <span>Телефон</span>
+              <span data-i18n="form_phone">Телефон</span>
               <input name="phone" type="tel" autocomplete="tel" required />
             </label>
             <label>
-              <span>О проекте</span>
+              <span data-i18n="form_message">О проекте</span>
               <textarea name="message" rows="5" required></textarea>
             </label>
-            <button class="button button--primary" type="submit">Отправить</button>
+            <button class="button button--primary" type="submit" data-i18n="form_submit">Отправить</button>
           </form>
           <div class="contact-notes reveal delay-2">
             <article class="card note-card">
@@ -349,7 +491,7 @@
             </article>
             <article class="card note-card">
               <span>Brief</span>
-              <p>Цель, сроки, бюджет, 2-3 ссылки на референсы.</p>
+              <p data-i18n="contact_brief">Цель, сроки, бюджет, 2-3 ссылки на референсы.</p>
             </article>
           </div>
         </div>
@@ -360,9 +502,9 @@
       <div class="wrap footer__grid">
         <a class="brand" href="#hero">
           <span class="brand__mark"><img src="./assets/SprooGeek.svg" alt="" /></span>
-          <span>dev <b>Sproogeek</b></span>
+          <span><b>Sproogeek</b>Dev</span>
         </a>
-        <p>Web, 3D, backend and launch-ready product systems.</p>
+        <p data-i18n="footer_desc">Web, 3D, backend and launch-ready product systems.</p>
         <a href="https://www.sproogeek.com/" target="_blank" rel="noreferrer">sproogeek.com</a>
       </div>
     </footer>

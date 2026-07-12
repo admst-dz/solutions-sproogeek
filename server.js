@@ -52,7 +52,7 @@ async function handleRequest(request, response) {
 const server = http.createServer(handleRequest);
 
 server.listen(PORT, HOST, () => {
-  console.log(`dev Sproogeek site: http://${HOST}:${PORT}/`);
+  console.log(`SproogeekDev site: http://${HOST}:${PORT}/`);
 });
 
 server.on('error', (error) => {
