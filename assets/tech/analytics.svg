@@ -1,0 +1,10 @@
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Analytics">
+  <g fill="none" stroke="#F8C46A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 4v16h16"/>
+  </g>
+  <g fill="#F8C46A">
+    <rect x="7" y="12" width="2.6" height="5" rx="0.4"/>
+    <rect x="11.7" y="9" width="2.6" height="8" rx="0.4"/>
+    <rect x="16.4" y="6" width="2.6" height="11" rx="0.4"/>
+  </g>
+</svg>
