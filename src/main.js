@@ -1,8 +1,17 @@
 import * as THREE from 'three';
 
 const CONTACT_EMAIL = 'info@sproogeeek.com';
+// Реальная отправка формы на почту без бэкенда — через Web3Forms (бесплатно).
+// 1) Открой https://web3forms.com, введи почту info@sproogeeek.com — access key придёт письмом.
+// 2) Вставь этот ключ ниже. Пока строка пустая — форма открывает почтовый клиент (mailto).
+const WEB3FORMS_ACCESS_KEY = '';
+const FORM_STATUS_TEXT = {
+  sending: { ru: 'Отправляем…', en: 'Sending…' },
+  success: { ru: 'Сообщение отправлено. Мы свяжемся с вами.', en: 'Message sent. We will get back to you.' },
+  error: { ru: 'Не удалось отправить. Попробуйте ещё раз или напишите на почту.', en: 'Could not send. Try again or email us.' },
+};
 const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const LOADER_DURATION = 8000;
+const LOADER_DURATION = 4000;
 const LOADER_WORDS = ['проектируем', 'building', 'тестируем', 'configuring'];
 const LOADER_CODE_SNIPPETS = [
   'def build_funnel(product):\n    scene = Scene(product)\n    scene.render(quality="4k")\n    return ship(scene)',
@@ -282,12 +291,52 @@ function setupContactForm() {
   const form = document.getElementById('contactForm');
   if (!form) return;
 
-  form.addEventListener('submit', (event) => {
+  const statusEl = document.getElementById('formStatus');
+  const submitButton = form.querySelector('button[type="submit"]');
+
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
     const data = new FormData(form);
-    const message = buildMailBody(data);
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Project request - SproogeekDev')}&body=${message}`;
+
+    // No key configured yet → fall back to opening the mail client.
+    if (!WEB3FORMS_ACCESS_KEY) {
+      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Project request - SproogeekDev')}&body=${buildMailBody(data)}`;
+      return;
+    }
+
+    data.append('access_key', WEB3FORMS_ACCESS_KEY);
+    data.append('subject', 'Project request - SproogeekDev');
+    data.append('from_name', 'SproogeekDev site');
+
+    setFormStatus(statusEl, 'sending');
+    if (submitButton) submitButton.disabled = true;
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: data,
+      });
+      const result = await response.json();
+      if (response.ok && result.success) {
+        setFormStatus(statusEl, 'success');
+        form.reset();
+      } else {
+        setFormStatus(statusEl, 'error');
+      }
+    } catch (error) {
+      setFormStatus(statusEl, 'error');
+    } finally {
+      if (submitButton) submitButton.disabled = false;
+    }
   });
+}
+
+function setFormStatus(element, state) {
+  if (!element) return;
+  const text = FORM_STATUS_TEXT[state];
+  element.textContent = text ? text[currentLang] || text.ru : '';
+  element.dataset.state = state;
 }
 
 function buildMailBody(data) {

@@ -82,7 +82,7 @@ textarea {
   background: var(--bg);
   transition: opacity 600ms ease, visibility 600ms ease;
   /* Failsafe: hide even if main.js never runs (e.g. stale/broken asset on prod). */
-  animation: loaderFailsafe 600ms ease 9200ms forwards;
+  animation: loaderFailsafe 600ms ease 5000ms forwards;
 }
 
 .loader.is-hidden {
@@ -102,7 +102,7 @@ textarea {
 /* Failsafe: release scroll lock even if main.js never removes the class. */
 body.is-loading {
   overflow: hidden;
-  animation: bodyUnlockFailsafe 1ms linear 9200ms forwards;
+  animation: bodyUnlockFailsafe 1ms linear 5000ms forwards;
 }
 
 @keyframes bodyUnlockFailsafe {
@@ -1033,6 +1033,64 @@ textarea:focus-visible {
   text-transform: uppercase;
 }
 
+.team-card {
+  transition: box-shadow 320ms ease, border-color 320ms ease;
+}
+
+.team-card:hover,
+.team-card:focus-within {
+  z-index: 6;
+  border-color: rgba(64, 240, 199, 0.4);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Expandable bio: collapsed by default, revealed on hover/focus. */
+.team-card__bio {
+  max-height: 0;
+  margin-top: 0;
+  opacity: 0;
+  overflow: hidden;
+  text-align: left;
+  transition: max-height 420ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 320ms ease, margin-top 420ms ease;
+}
+
+.team-card:hover .team-card__bio,
+.team-card:focus-within .team-card__bio {
+  max-height: 220px;
+  margin-top: 14px;
+  opacity: 1;
+}
+
+.team-card__bio p {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.team-card__facts {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.team-card__facts li {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--dim);
+}
+
+.team-card__facts li span:last-child {
+  color: var(--muted);
+}
+
 .team-flow {
   margin-top: 18px;
   padding: 24px;
@@ -1128,6 +1186,42 @@ textarea:focus-visible {
 .contact-form input:focus,
 .contact-form textarea:focus {
   border-color: rgba(64, 240, 199, 0.55);
+}
+
+/* Spam honeypot: hidden from users, bots tend to fill it. */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.form-status {
+  margin: 0;
+  min-height: 18px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.form-status[data-state="sending"] {
+  color: var(--muted);
+}
+
+.form-status[data-state="success"] {
+  color: var(--mint);
+}
+
+.form-status[data-state="error"] {
+  color: var(--pink);
+}
+
+.button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .contact-notes {
