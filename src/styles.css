@@ -1141,8 +1141,9 @@ textarea:focus-visible {
   white-space: nowrap;
 }
 
-/* Developer stacks show a real brand logo before the name. */
-.tech--dev {
+/* Any stack chip with a brand logo gets tighter left padding for the icon. */
+.tech--dev,
+.tech:has(.tech__logo) {
   padding-left: 4px;
 }
 

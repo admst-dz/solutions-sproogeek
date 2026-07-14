@@ -158,6 +158,7 @@ function init() {
   setupMenu();
   setupContactForm();
   setupLanguageToggle();
+  setupTeamCards();
   createSpaceScene();
 }
 
@@ -311,6 +312,27 @@ function setMenuState(button, menu, isOpen) {
   menu.setAttribute('aria-hidden', String(!isOpen));
   menu.classList.toggle('is-open', isOpen);
   document.body.classList.toggle('is-locked', isOpen);
+}
+
+// Tap/click a team card to expand its bio (primary trigger on touch, where
+// there is no hover). Opening one closes the others; tapping outside closes all.
+function setupTeamCards() {
+  const cards = [...document.querySelectorAll('.team-card')];
+  if (!cards.length) return;
+
+  cards.forEach((card) => {
+    card.addEventListener('click', () => {
+      const willOpen = !card.classList.contains('is-open');
+      cards.forEach((other) => other.classList.remove('is-open'));
+      card.classList.toggle('is-open', willOpen);
+    });
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('.team-card')) {
+      cards.forEach((card) => card.classList.remove('is-open'));
+    }
+  });
 }
 
 function setupContactForm() {
