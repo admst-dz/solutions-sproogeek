@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Space+Grotesk:wght@600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./src/styles.css?v=8" />
+    <link rel="stylesheet" href="./src/styles.css?v=9" />
     <script type="importmap">
       {
         "imports": {
@@ -333,7 +333,7 @@
             <div class="team-node reveal" style="--node-offset: -54px">
               <div class="team-node__connector" aria-hidden="true"></div>
               <div class="team-node__dot" aria-hidden="true"></div>
-              <div class="card team-card tilt">
+              <div class="card team-card">
                 <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #667eea, #764ba2)">
                   <img class="team-avatar__img" src="./assets/team/vladislav.jpg" alt="Владислав" loading="lazy" onerror="this.remove()" />
                   <span class="team-avatar__fallback">В</span>
@@ -342,12 +342,18 @@
                 <span class="team-role" data-i18n="team_vlad">Дизайнер</span>
                 <span class="team-stage">design</span>
                 <div class="team-card__bio">
-                  <p>Краткое описание сотрудника — добавьте текст.</p>
+                  <p class="team-card__desc" data-i18n="bio_vlad_desc">Отвечает за визуальный стиль продукта — от концепции до финальных макетов.</p>
                   <ul class="team-card__facts">
-                    <li><span>Опыт</span><span>—</span></li>
-                    <li><span>Стек</span><span>—</span></li>
-                    <li><span>Фокус</span><span>—</span></li>
+                    <li><span data-i18n="bio_label_exp">Опыт</span><span data-i18n="bio_vlad_exp">3+ года в UI/UX</span></li>
+                    <li><span data-i18n="bio_label_focus">Фокус</span><span data-i18n="bio_vlad_focus">Дизайн-система и пользовательский интерфейс</span></li>
                   </ul>
+                  <div class="team-card__stack">
+                    <span class="team-card__stack-label" data-i18n="bio_label_stack">Стек</span>
+                    <div class="tech-list">
+                      <span class="tech" style="--tech:#a259ff">Figma</span>
+                      <span class="tech" style="--tech:#2bb673">CorelDraw</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -355,7 +361,7 @@
             <div class="team-node reveal delay-1" style="--node-offset: 54px">
               <div class="team-node__connector" aria-hidden="true"></div>
               <div class="team-node__dot" aria-hidden="true"></div>
-              <div class="card team-card tilt">
+              <div class="card team-card">
                 <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #40f0c7, #4b8dff)">
                   <img class="team-avatar__img" src="./assets/team/andrey.jpg" alt="Андрей" loading="lazy" onerror="this.remove()" />
                   <span class="team-avatar__fallback">А</span>
@@ -364,12 +370,17 @@
                 <span class="team-role" data-i18n="team_andrey">CEO</span>
                 <span class="team-stage">manage</span>
                 <div class="team-card__bio">
-                  <p>Краткое описание сотрудника — добавьте текст.</p>
+                  <p class="team-card__desc" data-i18n="bio_andrey_desc">Определяет стратегию развития компании и ведёт команду к общим целям.</p>
                   <ul class="team-card__facts">
-                    <li><span>Опыт</span><span>—</span></li>
-                    <li><span>Стек</span><span>—</span></li>
-                    <li><span>Фокус</span><span>—</span></li>
+                    <li><span data-i18n="bio_label_exp">Опыт</span><span data-i18n="bio_andrey_exp">5+ лет в управлении</span></li>
+                    <li><span data-i18n="bio_label_focus">Фокус</span><span data-i18n="bio_andrey_focus">Стратегия, продукт, партнёрства</span></li>
                   </ul>
+                  <div class="team-card__stack">
+                    <span class="team-card__stack-label" data-i18n="bio_label_stack">Стек</span>
+                    <div class="tech-list">
+                      <span class="tech" style="--tech:#4b8dff">CRM</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -377,7 +388,7 @@
             <div class="team-node reveal delay-2" style="--node-offset: -54px">
               <div class="team-node__connector" aria-hidden="true"></div>
               <div class="team-node__dot" aria-hidden="true"></div>
-              <div class="card team-card tilt">
+              <div class="card team-card">
                 <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #f8c46a, #ff8a3d)">
                   <img class="team-avatar__img" src="./assets/team/nikita.jpg" alt="Никита" loading="lazy" onerror="this.remove()" />
                   <span class="team-avatar__fallback">Н</span>
@@ -386,12 +397,19 @@
                 <span class="team-role" data-i18n="team_nikita">Маркетолог / HR</span>
                 <span class="team-stage">marketing</span>
                 <div class="team-card__bio">
-                  <p>Краткое описание сотрудника — добавьте текст.</p>
+                  <p class="team-card__desc" data-i18n="bio_nikita_desc">Строит бренд компании и формирует команду мечты.</p>
                   <ul class="team-card__facts">
-                    <li><span>Опыт</span><span>—</span></li>
-                    <li><span>Стек</span><span>—</span></li>
-                    <li><span>Фокус</span><span>—</span></li>
+                    <li><span data-i18n="bio_label_exp">Опыт</span><span data-i18n="bio_nikita_exp">3+ года в маркетинге и HR</span></li>
+                    <li><span data-i18n="bio_label_focus">Фокус</span><span data-i18n="bio_nikita_focus">Продвижение и подбор персонала</span></li>
                   </ul>
+                  <div class="team-card__stack">
+                    <span class="team-card__stack-label" data-i18n="bio_label_stack">Стек</span>
+                    <div class="tech-list">
+                      <span class="tech" style="--tech:#4b8dff">CRM</span>
+                      <span class="tech" style="--tech:#ff5c9f" data-i18n="tech_target">Таргет</span>
+                      <span class="tech" style="--tech:#f8c46a" data-i18n="tech_analytics">Аналитика</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -399,7 +417,7 @@
             <div class="team-node reveal delay-3" style="--node-offset: 54px">
               <div class="team-node__connector" aria-hidden="true"></div>
               <div class="team-node__dot" aria-hidden="true"></div>
-              <div class="card team-card tilt">
+              <div class="card team-card">
                 <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #4b8dff, #667eea)">
                   <img class="team-avatar__img" src="./assets/team/pavel.jpg" alt="Павел" loading="lazy" onerror="this.remove()" />
                   <span class="team-avatar__fallback">П</span>
@@ -408,12 +426,19 @@
                 <span class="team-role" data-i18n="team_pavel">Backend developer</span>
                 <span class="team-stage">backend</span>
                 <div class="team-card__bio">
-                  <p>Краткое описание сотрудника — добавьте текст.</p>
+                  <p class="team-card__desc" data-i18n="bio_pavel_desc">Проектирует и поддерживает серверную часть продукта.</p>
                   <ul class="team-card__facts">
-                    <li><span>Опыт</span><span>—</span></li>
-                    <li><span>Стек</span><span>—</span></li>
-                    <li><span>Фокус</span><span>—</span></li>
+                    <li><span data-i18n="bio_label_exp">Опыт</span><span data-i18n="bio_pavel_exp">3+ года в backend-разработке</span></li>
+                    <li><span data-i18n="bio_label_focus">Фокус</span><span data-i18n="bio_pavel_focus">Архитектура API и производительность</span></li>
                   </ul>
+                  <div class="team-card__stack">
+                    <span class="team-card__stack-label" data-i18n="bio_label_stack">Стек</span>
+                    <div class="tech-list">
+                      <span class="tech tech--dev" style="--tech:#3776ab"><i>Py</i>Python</span>
+                      <span class="tech tech--dev" style="--tech:#336791"><i>Pg</i>PostgreSQL</span>
+                      <span class="tech tech--dev" style="--tech:#2496ed"><i>Dk</i>Docker</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -421,7 +446,7 @@
             <div class="team-node reveal" style="--node-offset: -54px">
               <div class="team-node__connector" aria-hidden="true"></div>
               <div class="team-node__dot" aria-hidden="true"></div>
-              <div class="card team-card tilt">
+              <div class="card team-card">
                 <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #ff5c9f, #ff8a3d)">
                   <img class="team-avatar__img" src="./assets/team/prohor.jpg" alt="Прохор" loading="lazy" onerror="this.remove()" />
                   <span class="team-avatar__fallback">П</span>
@@ -430,12 +455,19 @@
                 <span class="team-role" data-i18n="team_prohor">Frontend developer</span>
                 <span class="team-stage">frontend</span>
                 <div class="team-card__bio">
-                  <p>Краткое описание сотрудника — добавьте текст.</p>
+                  <p class="team-card__desc" data-i18n="bio_prohor_desc">Превращает дизайн в быстрый и удобный интерфейс.</p>
                   <ul class="team-card__facts">
-                    <li><span>Опыт</span><span>—</span></li>
-                    <li><span>Стек</span><span>—</span></li>
-                    <li><span>Фокус</span><span>—</span></li>
+                    <li><span data-i18n="bio_label_exp">Опыт</span><span data-i18n="bio_prohor_exp">3+ года во frontend-разработке</span></li>
+                    <li><span data-i18n="bio_label_focus">Фокус</span><span data-i18n="bio_prohor_focus">UI-компоненты и адаптивность</span></li>
                   </ul>
+                  <div class="team-card__stack">
+                    <span class="team-card__stack-label" data-i18n="bio_label_stack">Стек</span>
+                    <div class="tech-list">
+                      <span class="tech tech--dev" style="--tech:#61dafb"><i>Re</i>React</span>
+                      <span class="tech tech--dev" style="--tech:#3178c6"><i>TS</i>TypeScript</span>
+                      <span class="tech tech--dev" style="--tech:#38bdf8"><i>Tw</i>Tailwind</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -443,7 +475,7 @@
             <div class="team-node reveal delay-1" style="--node-offset: 54px">
               <div class="team-node__connector" aria-hidden="true"></div>
               <div class="team-node__dot" aria-hidden="true"></div>
-              <div class="card team-card tilt">
+              <div class="card team-card">
                 <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #36d1dc, #5b86e5)">
                   <img class="team-avatar__img" src="./assets/team/stanislav.jpg" alt="Станислав" loading="lazy" onerror="this.remove()" />
                   <span class="team-avatar__fallback">С</span>
@@ -452,12 +484,19 @@
                 <span class="team-role" data-i18n="team_stanislav">C++ developer</span>
                 <span class="team-stage">engine</span>
                 <div class="team-card__bio">
-                  <p>Краткое описание сотрудника — добавьте текст.</p>
+                  <p class="team-card__desc" data-i18n="bio_stanislav_desc">Разрабатывает высокопроизводительные системные модули.</p>
                   <ul class="team-card__facts">
-                    <li><span>Опыт</span><span>—</span></li>
-                    <li><span>Стек</span><span>—</span></li>
-                    <li><span>Фокус</span><span>—</span></li>
+                    <li><span data-i18n="bio_label_exp">Опыт</span><span data-i18n="bio_stanislav_exp">4+ года в C++</span></li>
+                    <li><span data-i18n="bio_label_focus">Фокус</span><span data-i18n="bio_stanislav_focus">Оптимизация и системная логика</span></li>
                   </ul>
+                  <div class="team-card__stack">
+                    <span class="team-card__stack-label" data-i18n="bio_label_stack">Стек</span>
+                    <div class="tech-list">
+                      <span class="tech tech--dev" style="--tech:#00599c"><i>C++</i>C++</span>
+                      <span class="tech tech--dev" style="--tech:#41cd52"><i>Qt</i>Qt</span>
+                      <span class="tech tech--dev" style="--tech:#649c33"><i>Cm</i>CMake</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -465,7 +504,7 @@
             <div class="team-node reveal delay-2" style="--node-offset: -54px">
               <div class="team-node__connector" aria-hidden="true"></div>
               <div class="team-node__dot" aria-hidden="true"></div>
-              <div class="card team-card tilt">
+              <div class="card team-card">
                 <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #11998e, #40f0c7)">
                   <img class="team-avatar__img" src="./assets/team/ivan.jpg" alt="Иван" loading="lazy" onerror="this.remove()" />
                   <span class="team-avatar__fallback">И</span>
@@ -474,12 +513,19 @@
                 <span class="team-role" data-i18n="team_ivan">Специалист SMM</span>
                 <span class="team-stage">smm</span>
                 <div class="team-card__bio">
-                  <p>Краткое описание сотрудника — добавьте текст.</p>
+                  <p class="team-card__desc" data-i18n="bio_ivan_desc">Ведёт соцсети компании и выстраивает коммуникацию с аудиторией.</p>
                   <ul class="team-card__facts">
-                    <li><span>Опыт</span><span>—</span></li>
-                    <li><span>Стек</span><span>—</span></li>
-                    <li><span>Фокус</span><span>—</span></li>
+                    <li><span data-i18n="bio_label_exp">Опыт</span><span data-i18n="bio_ivan_exp">3+ года в SMM &amp; Digital</span></li>
+                    <li><span data-i18n="bio_label_focus">Фокус</span><span data-i18n="bio_ivan_focus">Контент-стратегия и вовлечённость</span></li>
                   </ul>
+                  <div class="team-card__stack">
+                    <span class="team-card__stack-label" data-i18n="bio_label_stack">Стек</span>
+                    <div class="tech-list">
+                      <span class="tech" style="--tech:#e1306c">Instagram</span>
+                      <span class="tech" style="--tech:#229ed9">Telegram</span>
+                      <span class="tech" style="--tech:#00c4cc">Canva</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -584,6 +630,6 @@
       </div>
     </footer>
 
-    <script type="module" src="./src/main.js?v=8"></script>
+    <script type="module" src="./src/main.js?v=9"></script>
   </body>
 </html>
