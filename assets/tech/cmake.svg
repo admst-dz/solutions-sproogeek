@@ -1,0 +1,8 @@
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CMake">
+  <g fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3 4.5 19.5" stroke="#064F8C"/>
+    <path d="M12 3 19.5 19.5" stroke="#BB242A"/>
+    <path d="M4.5 19.5 19.5 19.5" stroke="#5B8F3E"/>
+    <path d="M12 3 12 19.5" stroke="#F5A623" stroke-width="1.2" opacity="0.7"/>
+  </g>
+</svg>

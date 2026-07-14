@@ -961,8 +961,13 @@ textarea:focus-visible {
   transform: translateX(-50%) translateY(calc(var(--node-offset, 0) * -1));
 }
 
+/* Wider container so the 7 cards get ~1/6 more room each. */
+.team-section > .wrap {
+  width: min(1440px, calc(100% - 44px));
+}
+
 .team-card {
-  padding: 20px 16px;
+  padding: 24px 18px;
   text-align: center;
   min-width: 0;
   z-index: 3;
@@ -972,15 +977,15 @@ textarea:focus-visible {
   position: relative;
   display: grid;
   place-items: center;
-  width: 56px;
-  height: 56px;
-  margin: 0 auto 14px;
+  width: 66px;
+  height: 66px;
+  margin: 0 auto 16px;
   border-radius: 50%;
   border: 2px solid rgba(255, 255, 255, 0.15);
   background: var(--avatar-bg, linear-gradient(135deg, var(--mint), var(--blue)));
   color: #fff;
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 700;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   overflow: hidden;
@@ -1007,21 +1012,21 @@ textarea:focus-visible {
 }
 
 .team-card h3 {
-  font-size: 16px;
+  font-size: 18px;
   margin-bottom: 6px;
 }
 
 .team-role {
   display: block;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.4;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .team-stage {
   display: inline-block;
-  padding: 4px 10px;
+  padding: 5px 12px;
   border: 1px solid rgba(64, 240, 199, 0.18);
   border-radius: 999px;
   color: var(--mint);
@@ -1041,7 +1046,8 @@ textarea:focus-visible {
 /* On hover/focus the card scales up and lifts above its neighbours so the
    expanded bio stays readable. */
 .team-card:hover,
-.team-card:focus-within {
+.team-card:focus-within,
+.team-card.is-open {
   z-index: 6;
   transform: scale(1.08);
   border-color: rgba(64, 240, 199, 0.4);
@@ -1059,7 +1065,8 @@ textarea:focus-visible {
 }
 
 .team-card:hover .team-card__bio,
-.team-card:focus-within .team-card__bio {
+.team-card:focus-within .team-card__bio,
+.team-card.is-open .team-card__bio {
   max-height: 360px;
   margin-top: 14px;
   opacity: 1;
@@ -1082,24 +1089,23 @@ textarea:focus-visible {
 
 .team-card__facts li {
   display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  padding-top: 7px;
+  flex-direction: column;
+  gap: 3px;
+  padding-top: 8px;
   border-top: 1px solid var(--line);
   font-family: var(--font-mono);
-  font-size: 10.5px;
-  line-height: 1.4;
+  font-size: 11px;
+  line-height: 1.45;
   color: var(--dim);
 }
 
 .team-card__facts li span:first-child {
-  flex: 0 0 auto;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
 
 .team-card__facts li span:last-child {
-  text-align: right;
+  text-align: left;
   color: var(--muted);
 }
 
@@ -1135,25 +1141,32 @@ textarea:focus-visible {
   white-space: nowrap;
 }
 
-/* Developer stacks show a language "icon" badge before the name. */
+/* Developer stacks show a real brand logo before the name. */
 .tech--dev {
-  padding-left: 3px;
+  padding-left: 4px;
 }
 
-.tech--dev i {
-  display: grid;
-  place-items: center;
-  min-width: 17px;
-  height: 17px;
-  padding: 0 3px;
-  border-radius: 6px;
-  background: var(--tech, var(--mint));
-  color: #ffffff;
-  font-style: normal;
-  font-size: 8px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+.tech__logo {
+  display: block;
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+/* Thematic line-icon shared by deliverable / architecture / case cards. */
+.card-graphic {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 16px;
+  color: var(--mint);
+  opacity: 0.85;
+}
+
+.card-graphic svg {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .team-flow {
