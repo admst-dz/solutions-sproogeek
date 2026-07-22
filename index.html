@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Space+Grotesk:wght@600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./src/styles.css?v=11" />
+    <link rel="stylesheet" href="./src/styles.css?v=13" />
     <script type="importmap">
       {
         "imports": {
@@ -119,7 +119,7 @@
                 <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <rect x="4" y="8" width="40" height="28" rx="4" stroke="var(--mint)" stroke-width="1.5"/>
                   <line x1="4" y1="16" x2="44" y2="16" stroke="var(--mint)" stroke-width="1.5" opacity="0.5"/>
-                  <circle cx="10" cy="12" r="1.5" fill="#ff5c9f"/><circle cx="15" cy="12" r="1.5" fill="#f8c46a"/><circle cx="20" cy="12" r="1.5" fill="#40f0c7"/>
+                  <circle cx="10" cy="12" r="1.5" fill="#e62f4f"/><circle cx="15" cy="12" r="1.5" fill="#c8783f"/><circle cx="20" cy="12" r="1.5" fill="#2f213f"/>
                   <rect x="10" y="22" width="16" height="2" rx="1" fill="var(--mint)" opacity="0.4"/>
                   <rect x="10" y="27" width="24" height="2" rx="1" fill="var(--mint)" opacity="0.25"/>
                   <rect x="10" y="32" width="10" height="2" rx="1" fill="var(--mint)" opacity="0.15"/>
@@ -340,11 +340,8 @@
           </div>
 
           <div class="team-pipeline">
-            <div class="team-pipeline__line" aria-hidden="true"></div>
 
-            <div class="team-node reveal" style="--node-offset: -54px">
-              <div class="team-node__connector" aria-hidden="true"></div>
-              <div class="team-node__dot" aria-hidden="true"></div>
+            <div class="team-node reveal">
               <div class="card team-card">
                 <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #667eea, #764ba2)">
                   <img class="team-avatar__img" src="./assets/team/vladislav.jpg" alt="Владислав" loading="lazy" onerror="this.remove()" />
@@ -370,9 +367,7 @@
               </div>
             </div>
 
-            <div class="team-node reveal delay-1" style="--node-offset: 54px">
-              <div class="team-node__connector" aria-hidden="true"></div>
-              <div class="team-node__dot" aria-hidden="true"></div>
+            <div class="team-node reveal delay-1">
               <div class="card team-card">
                 <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #40f0c7, #4b8dff)">
                   <img class="team-avatar__img" src="./assets/team/andrey.jpg" alt="Андрей" loading="lazy" onerror="this.remove()" />
@@ -397,9 +392,7 @@
               </div>
             </div>
 
-            <div class="team-node reveal delay-2" style="--node-offset: -54px">
-              <div class="team-node__connector" aria-hidden="true"></div>
-              <div class="team-node__dot" aria-hidden="true"></div>
+            <div class="team-node reveal delay-2">
               <div class="card team-card">
                 <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #f8c46a, #ff8a3d)">
                   <img class="team-avatar__img" src="./assets/team/nikita.jpg" alt="Никита" loading="lazy" onerror="this.remove()" />
@@ -426,9 +419,7 @@
               </div>
             </div>
 
-            <div class="team-node reveal delay-3" style="--node-offset: 54px">
-              <div class="team-node__connector" aria-hidden="true"></div>
-              <div class="team-node__dot" aria-hidden="true"></div>
+            <div class="team-node reveal delay-3">
               <div class="card team-card">
                 <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #4b8dff, #667eea)">
                   <img class="team-avatar__img" src="./assets/team/pavel.jpg" alt="Павел" loading="lazy" onerror="this.remove()" />
@@ -455,9 +446,7 @@
               </div>
             </div>
 
-            <div class="team-node reveal" style="--node-offset: -54px">
-              <div class="team-node__connector" aria-hidden="true"></div>
-              <div class="team-node__dot" aria-hidden="true"></div>
+            <div class="team-node reveal">
               <div class="card team-card">
                 <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #ff5c9f, #ff8a3d)">
                   <img class="team-avatar__img" src="./assets/team/prohor.jpg" alt="Прохор" loading="lazy" onerror="this.remove()" />
@@ -484,9 +473,7 @@
               </div>
             </div>
 
-            <div class="team-node reveal delay-1" style="--node-offset: 54px">
-              <div class="team-node__connector" aria-hidden="true"></div>
-              <div class="team-node__dot" aria-hidden="true"></div>
+            <div class="team-node reveal delay-1">
               <div class="card team-card">
                 <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #36d1dc, #5b86e5)">
                   <img class="team-avatar__img" src="./assets/team/stanislav.jpg" alt="Станислав" loading="lazy" onerror="this.remove()" />
@@ -513,9 +500,7 @@
               </div>
             </div>
 
-            <div class="team-node reveal delay-2" style="--node-offset: -54px">
-              <div class="team-node__connector" aria-hidden="true"></div>
-              <div class="team-node__dot" aria-hidden="true"></div>
+            <div class="team-node reveal delay-2">
               <div class="card team-card">
                 <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #11998e, #40f0c7)">
                   <img class="team-avatar__img" src="./assets/team/ivan.jpg" alt="Иван" loading="lazy" onerror="this.remove()" />
@@ -642,6 +627,6 @@
       </div>
     </footer>
 
-    <script type="module" src="./src/main.js?v=11"></script>
+    <script type="module" src="./src/main.js?v=13"></script>
   </body>
 </html>

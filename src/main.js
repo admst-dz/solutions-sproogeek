@@ -1,14 +1,16 @@
 import * as THREE from 'three';
 
 const CONTACT_EMAIL = 'info@sproogeeek.com';
-// Реальная отправка формы на почту без бэкенда — через Web3Forms (бесплатно).
-// 1) Открой https://web3forms.com, введи почту info@sproogeeek.com — access key придёт письмом.
-// 2) Вставь этот ключ ниже. Пока строка пустая — форма открывает почтовый клиент (mailto).
-const WEB3FORMS_ACCESS_KEY = '';
+// Заявки уходят в Telegram (@sproogeek_dev) через собственный Python-бэкенд
+// в папке /backend. Токен бота живёт только на сервере — в браузер он не
+// попадает, иначе им мог бы воспользоваться кто угодно.
+// Пока бэкенд не поднят — форма откроет почтовый клиент (mailto).
+const LEAD_ENDPOINT = '/api/lead';
 const FORM_STATUS_TEXT = {
   sending: { ru: 'Отправляем…', en: 'Sending…' },
   success: { ru: 'Сообщение отправлено. Мы свяжемся с вами.', en: 'Message sent. We will get back to you.' },
   error: { ru: 'Не удалось отправить. Попробуйте ещё раз или напишите на почту.', en: 'Could not send. Try again or email us.' },
+  rateLimited: { ru: 'Слишком много заявок. Попробуйте позже.', en: 'Too many requests. Please try again later.' },
 };
 const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const LOADER_DURATION = 4000;
@@ -346,45 +348,58 @@ function setupContactForm() {
     event.preventDefault();
     const data = new FormData(form);
 
-    // No key configured yet → fall back to opening the mail client.
-    if (!WEB3FORMS_ACCESS_KEY) {
-      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Project request - SproogeekDev')}&body=${buildMailBody(data)}`;
-      return;
-    }
-
-    data.append('access_key', WEB3FORMS_ACCESS_KEY);
-    data.append('subject', 'Project request - SproogeekDev');
-    data.append('from_name', 'SproogeekDev site');
-
     setFormStatus(statusEl, 'sending');
     if (submitButton) submitButton.disabled = true;
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch(LEAD_ENDPOINT, {
         method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: data,
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          name: String(data.get('name') || '').trim(),
+          email: String(data.get('email') || '').trim(),
+          phone: String(data.get('phone') || '').trim(),
+          message: String(data.get('message') || '').trim(),
+          botcheck: data.get('botcheck') ? 'on' : '',
+        }),
       });
-      const result = await response.json();
-      if (response.ok && result.success) {
+
+      if (response.ok) {
         setFormStatus(statusEl, 'success');
         form.reset();
+      } else if (response.status === 429) {
+        setFormStatus(statusEl, 'rateLimited');
+      } else if (response.status === 503 || response.status === 404) {
+        // Backend not deployed yet → fall back to the mail client.
+        openMailFallback(data);
+        setFormStatus(statusEl, '');
       } else {
         setFormStatus(statusEl, 'error');
       }
     } catch (error) {
-      setFormStatus(statusEl, 'error');
+      // Network failure (backend down / not reachable) → mail client fallback.
+      openMailFallback(data);
+      setFormStatus(statusEl, '');
     } finally {
       if (submitButton) submitButton.disabled = false;
     }
   });
 }
 
+function openMailFallback(data) {
+  const subject = encodeURIComponent('Project request - SproogeekDev');
+  window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${buildMailBody(data)}`;
+}
+
 function setFormStatus(element, state) {
   if (!element) return;
   const text = FORM_STATUS_TEXT[state];
   element.textContent = text ? text[currentLang] || text.ru : '';
-  element.dataset.state = state;
+  if (state) {
+    element.dataset.state = state;
+  } else {
+    delete element.dataset.state;
+  }
 }
 
 function buildMailBody(data) {
@@ -467,12 +482,14 @@ function createGalaxy() {
   geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
   geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
+  // Normal blending (not additive): the page background is light cream, so the
+  // particles must darken it rather than brighten it to stay visible.
   const material = new THREE.PointsMaterial({
-    size: 0.08,
+    size: 0.11,
     transparent: true,
-    opacity: 0.74,
+    opacity: 0.5,
     vertexColors: true,
-    blending: THREE.AdditiveBlending,
+    blending: THREE.NormalBlending,
     depthWrite: false,
   });
 
@@ -489,9 +506,11 @@ function writeParticle(positions, colors, index, count) {
   positions[offset + 1] = (progress - 0.5) * 46;
   positions[offset + 2] = Math.sin(angle) * radius;
 
-  colors[offset] = 0.25 + progress * 0.45;
-  colors[offset + 1] = 0.72 + Math.sin(progress * Math.PI) * 0.25;
-  colors[offset + 2] = 1 - progress * 0.35;
+  // Blend along the brand palette: deep purple #2F213F → crimson #E62F4F.
+  const mix = Math.sin(progress * Math.PI);
+  colors[offset] = 0.184 + mix * 0.718;
+  colors[offset + 1] = 0.129 + mix * 0.055;
+  colors[offset + 2] = 0.247 + mix * 0.063;
 }
 
 function animateSpaceScene(renderer, scene, camera, galaxy) {
