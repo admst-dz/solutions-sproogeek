@@ -44,7 +44,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Space+Grotesk:wght@600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./src/styles.css?v=16" />
+    <link rel="stylesheet" href="./src/styles.css?v=17" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -146,6 +146,7 @@
       <a href="#team" data-i18n="nav_team">Команда</a>
       <a href="#process" data-i18n="nav_process">Процесс</a>
       <a href="#contact" data-i18n="nav_contact">Контакт</a>
+      <a class="mobile-menu__cta" href="#contact" data-i18n="nav_cta">Обсудить проект</a>
     </aside>
 
     <main>
@@ -191,63 +192,25 @@
 
           <div class="service-grid">
             <article class="card service-card reveal tilt">
-              <div class="service-card__icon">
-                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="4" y="8" width="40" height="28" rx="4" stroke="var(--mint)" stroke-width="1.5"/>
-                  <line x1="4" y1="16" x2="44" y2="16" stroke="var(--mint)" stroke-width="1.5" opacity="0.5"/>
-                  <circle cx="10" cy="12" r="1.5" fill="#e62f4f"/><circle cx="15" cy="12" r="1.5" fill="#c8783f"/><circle cx="20" cy="12" r="1.5" fill="#2f213f"/>
-                  <rect x="10" y="22" width="16" height="2" rx="1" fill="var(--mint)" opacity="0.4"/>
-                  <rect x="10" y="27" width="24" height="2" rx="1" fill="var(--mint)" opacity="0.25"/>
-                  <rect x="10" y="32" width="10" height="2" rx="1" fill="var(--mint)" opacity="0.15"/>
-                </svg>
-              </div>
+              <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="4.5" width="19" height="15"/><path d="M2.5 9h19"/><path d="M6 13h8M6 16h5"/></svg></div>
               <span class="card-index">01</span>
               <h3 data-i18n="s1_title">Сайты и продуктовые лендинги</h3>
               <p data-i18n="s1_desc">Быстрые витрины с сильной подачей, адаптивом, SEO-основой и анимациями без перегруза.</p>
             </article>
             <article class="card service-card reveal delay-1 tilt">
-              <div class="service-card__icon">
-                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M24 6L42 16V32L24 42L6 32V16L24 6Z" stroke="var(--mint)" stroke-width="1.5"/>
-                  <path d="M24 6L24 42" stroke="var(--mint)" stroke-width="1" opacity="0.3"/>
-                  <path d="M6 16L42 32" stroke="var(--mint)" stroke-width="1" opacity="0.2"/>
-                  <path d="M42 16L6 32" stroke="var(--mint)" stroke-width="1" opacity="0.2"/>
-                  <circle cx="24" cy="24" r="3" fill="var(--mint)" opacity="0.3"/>
-                </svg>
-              </div>
+              <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.5 21 7v10l-9 4.5L3 17V7z"/><path d="M3 7l9 4.5L21 7M12 11.5v10"/></svg></div>
               <span class="card-index">02</span>
               <h3 data-i18n="s2_title">3D-конфигураторы</h3>
               <p data-i18n="s2_desc">Three.js, R3F, загрузка моделей, брендирование, цвета, материалы и подготовка заказа.</p>
             </article>
             <article class="card service-card reveal delay-2 tilt">
-              <div class="service-card__icon">
-                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="12" y="4" width="24" height="40" rx="3" stroke="var(--mint)" stroke-width="1.5"/>
-                  <line x1="12" y1="12" x2="36" y2="12" stroke="var(--mint)" stroke-width="1" opacity="0.3"/>
-                  <line x1="12" y1="36" x2="36" y2="36" stroke="var(--mint)" stroke-width="1" opacity="0.3"/>
-                  <circle cx="18" cy="8" r="1" fill="var(--mint)" opacity="0.5"/><circle cx="22" cy="8" r="1" fill="#4b8dff" opacity="0.5"/>
-                  <rect x="16" y="16" width="16" height="2" rx="1" fill="var(--mint)" opacity="0.4"/>
-                  <rect x="16" y="20" width="12" height="2" rx="1" fill="#4b8dff" opacity="0.3"/>
-                  <rect x="16" y="24" width="14" height="2" rx="1" fill="var(--mint)" opacity="0.2"/>
-                  <rect x="16" y="28" width="10" height="2" rx="1" fill="#4b8dff" opacity="0.15"/>
-                </svg>
-              </div>
+              <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="4" width="18" height="6"/><rect x="3" y="14" width="18" height="6"/><path d="M6.5 7h.01M6.5 17h.01"/></svg></div>
               <span class="card-index">03</span>
               <h3 data-i18n="s3_title">Backend и интеграции</h3>
               <p data-i18n="s3_desc">FastAPI, PostgreSQL, роли, платежные и CRM-интеграции, события и фоновые задачи.</p>
             </article>
             <article class="card service-card reveal delay-3 tilt">
-              <div class="service-card__icon">
-                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="24" cy="24" r="18" stroke="var(--mint)" stroke-width="1.5" stroke-dasharray="4 3"/>
-                  <circle cx="24" cy="24" r="8" stroke="var(--mint)" stroke-width="1" opacity="0.4"/>
-                  <path d="M24 6V12" stroke="var(--mint)" stroke-width="1.5"/>
-                  <path d="M24 36V42" stroke="var(--mint)" stroke-width="1.5"/>
-                  <path d="M6 24H12" stroke="var(--mint)" stroke-width="1.5"/>
-                  <path d="M36 24H42" stroke="var(--mint)" stroke-width="1.5"/>
-                  <circle cx="24" cy="24" r="2" fill="var(--mint)"/>
-                </svg>
-              </div>
+              <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3"/></svg></div>
               <span class="card-index">04</span>
               <h3 data-i18n="s4_title">DevOps и поддержка</h3>
               <p data-i18n="s4_desc">Docker, reverse proxy, CI/CD, мониторинг и аккуратный релизный процесс.</p>
@@ -256,19 +219,19 @@
 
           <div class="deliverables-grid">
             <article class="card deliverable-card reveal">
-              <div class="card-graphic"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="20" cy="20" r="14"/><circle cx="20" cy="20" r="8"/><circle cx="20" cy="20" r="2" fill="currentColor"/></svg></div>
+              <div class="card-graphic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><path d="M12 10.5v3"/></svg></div>
               <span>Strategy</span>
               <h3 data-i18n="del1_title">Что уточнить перед стартом</h3>
               <p data-i18n="del1_desc">Цель страницы, аудитория, оффер, 3-5 ключевых преимуществ, примеры конкурентов и желаемое действие пользователя.</p>
             </article>
             <article class="card deliverable-card reveal delay-1">
-              <div class="card-graphic"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="10" y="6" width="20" height="28" rx="2"/><line x1="15" y1="14" x2="25" y2="14"/><line x1="15" y1="20" x2="25" y2="20"/><line x1="15" y1="26" x2="21" y2="26"/></svg></div>
+              <div class="card-graphic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="2.5" width="14" height="19"/><path d="M8.5 8h7M8.5 12h7M8.5 16h4"/></svg></div>
               <span>Content</span>
               <h3 data-i18n="del2_title">Что заменить своими данными</h3>
               <p data-i18n="del2_desc">Названия услуг, реальные кейсы, цифры результата, стек технологий, контакты, ссылки на проекты и текст формы.</p>
             </article>
             <article class="card deliverable-card reveal delay-2">
-              <div class="card-graphic"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6c5 3 7 8 7 14l-3 3h-8l-3-3c0-6 2-11 7-14z"/><circle cx="20" cy="16" r="2.5"/><path d="M14 27l-3 6 6-3M26 27l3 6-6-3"/></svg></div>
+              <div class="card-graphic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" xmlns="http://www.w3.org/2000/svg"><path d="M12 21V4"/><path d="M6 10l6-6 6 6"/><path d="M6 21h12"/></svg></div>
               <span>Launch</span>
               <h3 data-i18n="del3_title">Что будет на выходе</h3>
               <p data-i18n="del3_desc">Лендинг, адаптив, 3D/анимации, базовая SEO-разметка, локальный запуск и структура для дальнейшего редактирования.</p>
@@ -311,7 +274,7 @@
 
         <div class="wrap case-detail-grid">
           <article class="card detail-card reveal">
-            <div class="card-graphic"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 6v28"/><path d="M12 8h16l-3 5 3 5H12"/></svg></div>
+            <div class="card-graphic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" xmlns="http://www.w3.org/2000/svg"><path d="M6 22V3"/><path d="M6 4h12l-3 4 3 4H6"/></svg></div>
             <h3 data-i18n="case_task_title">Задача</h3>
             <p data-i18n="case_task_desc">
               Убрать долгие согласования макетов между клиентом, дилером и производством: клиент
@@ -319,7 +282,7 @@
             </p>
           </article>
           <article class="card detail-card reveal delay-1">
-            <div class="card-graphic"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6a9 9 0 00-5 16v4h10v-4a9 9 0 00-5-16z"/><line x1="16" y1="32" x2="24" y2="32"/></svg></div>
+            <div class="card-graphic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 15A6 6 0 1 1 15.5 15"/><path d="M9.5 18h5M10.5 21h3"/></svg></div>
             <h3 data-i18n="case_solution_title">Решение</h3>
             <p data-i18n="case_solution_desc">
               В проекте связаны клиентский конфигуратор, роли пользователей, API заказов,
@@ -327,7 +290,7 @@
             </p>
           </article>
           <article class="card detail-card reveal delay-2">
-            <div class="card-graphic"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="20" cy="20" r="14"/><path d="M14 20l4 4 8-8"/></svg></div>
+            <div class="card-graphic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="8.5"/><path d="M8 12l3 3 5-6"/></svg></div>
             <h3 data-i18n="case_result_title">Результат</h3>
             <p data-i18n="case_result_desc">
               MVP с реальными продуктовыми сценариями: выбор параметров, логотипы, рендеры,
@@ -350,42 +313,42 @@
 
           <div class="architecture-map">
             <article class="card architecture-node reveal">
-              <div class="card-graphic"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="9" width="28" height="22" rx="2"/><line x1="6" y1="15" x2="34" y2="15"/><circle cx="10" cy="12" r="1" fill="currentColor"/><circle cx="13" cy="12" r="1" fill="currentColor"/></svg></div>
+              <div class="card-graphic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="4.5" width="19" height="15"/><path d="M2.5 9h19"/><path d="M5.5 6.75h.01"/></svg></div>
               <span>01 / Client</span>
               <h3 data-i18n="arch_n1_title">Frontend</h3>
               <p data-i18n="arch_n1_desc">Витрина, конфигуратор, личный кабинет, загрузка логотипов, выбор параметров и оформление заявки.</p>
               <ul><li>React / Vite</li><li>State management</li><li>Responsive UI</li></ul>
             </article>
             <article class="card architecture-node reveal delay-1">
-              <div class="card-graphic"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6l12 6.5v15L20 34 8 27.5v-15L20 6z"/><path d="M8 12.5l12 6.5 12-6.5M20 19v15"/></svg></div>
+              <div class="card-graphic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.5 21 7v10l-9 4.5L3 17V7z"/><path d="M3 7l9 4.5L21 7M12 11.5v10"/></svg></div>
               <span>02 / Visual</span>
               <h3 data-i18n="arch_n2_title">3D Engine</h3>
               <p data-i18n="arch_n2_desc">Загрузка .glb моделей, материалы, цвета, брендирование и визуальное подтверждение результата.</p>
               <ul><li>Three.js</li><li>GLTF assets</li><li>Realtime preview</li></ul>
             </article>
             <article class="card architecture-node reveal delay-2">
-              <div class="card-graphic"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="8" y="8" width="24" height="9" rx="2"/><rect x="8" y="23" width="24" height="9" rx="2"/><circle cx="13" cy="12.5" r="1" fill="currentColor"/><circle cx="13" cy="27.5" r="1" fill="currentColor"/></svg></div>
+              <div class="card-graphic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="4" width="18" height="6"/><rect x="3" y="14" width="18" height="6"/><path d="M6.5 7h.01M6.5 17h.01"/></svg></div>
               <span>03 / API</span>
               <h3 data-i18n="arch_n3_title">Backend</h3>
               <p data-i18n="arch_n3_desc">Пользователи, роли, продукты, заказы, цены, статусы, валидация входящих данных и безопасность.</p>
               <ul><li>FastAPI</li><li>PostgreSQL</li><li>JWT / OAuth</li></ul>
             </article>
             <article class="card architecture-node reveal">
-              <div class="card-graphic"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="8" y="8" width="24" height="24" rx="2"/><circle cx="15" cy="16" r="2.5"/><path d="M8 28l7-7 5 5 4-4 8 8"/></svg></div>
+              <div class="card-graphic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="4" width="18" height="16"/><path d="M3 16l5-5 4 4 3-3 6 6"/><circle cx="9" cy="8.5" r="1.5"/></svg></div>
               <span>04 / Workers</span>
               <h3 data-i18n="arch_n4_title">Render & PDF</h3>
               <p data-i18n="arch_n4_desc">Фоновые сервисы создают PNG-рендеры 3D-сцены и технологические PDF-документы для производства.</p>
               <ul><li>Puppeteer</li><li>Headless WebGL</li><li>PDF generator</li></ul>
             </article>
             <article class="card architecture-node reveal delay-1">
-              <div class="card-graphic"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="20" r="3"/><circle cx="30" cy="10" r="3"/><circle cx="30" cy="30" r="3"/><path d="M13 19l14-8M13 21l14 8"/></svg></div>
+              <div class="card-graphic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" xmlns="http://www.w3.org/2000/svg"><circle cx="5" cy="12" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M7.2 10.9 16.8 7.1M7.2 13.1l9.6 3.8"/></svg></div>
               <span>05 / Events</span>
               <h3 data-i18n="arch_n5_title">Data Flow</h3>
               <p data-i18n="arch_n5_desc">События заказа проходят через API, очередь задач, логирование, хранение файлов и уведомления.</p>
               <ul><li>Kafka / jobs</li><li>CSV / audit logs</li><li>Uploads storage</li></ul>
             </article>
             <article class="card architecture-node reveal delay-2">
-              <div class="card-graphic"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="20" cy="20" r="6"/><path d="M20 6v4M20 30v4M6 20h4M30 20h4M10 10l3 3M27 27l3 3M30 10l-3 3M13 27l-3 3"/></svg></div>
+              <div class="card-graphic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="3.5"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.2 5.2l2.1 2.1M16.7 16.7l2.1 2.1M18.8 5.2l-2.1 2.1M7.3 16.7l-2.1 2.1"/></svg></div>
               <span>06 / Ops</span>
               <h3 data-i18n="arch_n6_title">Infrastructure</h3>
               <p data-i18n="arch_n6_desc">Контейнеризация, reverse proxy, SSL, CI/CD и наблюдаемость для спокойного production-запуска.</p>
@@ -551,25 +514,52 @@
 
             <div class="team-node reveal delay-1">
               <div class="card team-card">
-                <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #36d1dc, #5b86e5)">
-                  <img class="team-avatar__img" src="./assets/team/stanislav.jpg" alt="Станислав" loading="lazy" onerror="this.remove()" />
-                  <span class="team-avatar__fallback">С</span>
+                <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #ff8a3d, #e62f4f)">
+                  <img class="team-avatar__img" src="./assets/team/alexandr.jpg" alt="Александр" loading="lazy" onerror="this.remove()" />
+                  <span class="team-avatar__fallback">А</span>
                 </div>
-                <h3 data-i18n="team_stanislav_name">Станислав</h3>
-                <span class="team-role" data-i18n="team_stanislav">C++ developer</span>
-                <span class="team-stage">engine</span>
+                <h3 data-i18n="team_alexandr_name">Александр</h3>
+                <span class="team-role" data-i18n="team_alexandr">Креативный менеджер</span>
+                <span class="team-stage">creative</span>
                 <div class="team-card__bio">
-                  <p class="team-card__desc" data-i18n="bio_stanislav_desc">Разрабатывает высокопроизводительные системные модули.</p>
+                  <p class="team-card__desc" data-i18n="bio_alexandr_desc">Отвечает за креатив и визуальный контент для соцсетей.</p>
                   <ul class="team-card__facts">
-                    <li><span data-i18n="bio_label_exp">Опыт</span><span data-i18n="bio_stanislav_exp">4+ года в C++</span></li>
-                    <li><span data-i18n="bio_label_focus">Фокус</span><span data-i18n="bio_stanislav_focus">Оптимизация и системная логика</span></li>
+                    <li><span data-i18n="bio_label_exp">Опыт</span><span data-i18n="bio_alexandr_exp">2 года в SMM</span></li>
+                    <li><span data-i18n="bio_label_focus">Фокус</span><span data-i18n="bio_alexandr_focus">Продвижение в соцсетях</span></li>
                   </ul>
                   <div class="team-card__stack">
                     <span class="team-card__stack-label" data-i18n="bio_label_stack">Стек</span>
                     <div class="tech-list">
-                      <span class="tech tech--dev" style="--tech:#00599c"><img class="tech__logo" src="./assets/tech/cplusplus.svg" alt="" loading="lazy" />C++</span>
-                      <span class="tech tech--dev" style="--tech:#41cd52"><img class="tech__logo" src="./assets/tech/qt.svg" alt="" loading="lazy" />Qt</span>
-                      <span class="tech tech--dev" style="--tech:#649c33"><img class="tech__logo" src="./assets/tech/cmake.svg" alt="" loading="lazy" />CMake</span>
+                      <span class="tech" style="--tech:#ff9a00"><img class="tech__logo" src="./assets/tech/illustrator.svg" alt="" loading="lazy" />Illustrator</span>
+                      <span class="tech" style="--tech:#9999ff"><img class="tech__logo" src="./assets/tech/premiere.svg" alt="" loading="lazy" />Premiere Pro</span>
+                      <span class="tech" style="--tech:#25f4ee"><img class="tech__logo" src="./assets/tech/capcut.svg" alt="" loading="lazy" />CapCut</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="team-node reveal delay-2">
+              <div class="card team-card">
+                <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #5282ff, #2f213f)">
+                  <img class="team-avatar__img" src="./assets/team/nastachka.jpg" alt="Настачка" loading="lazy" onerror="this.remove()" />
+                  <span class="team-avatar__fallback">Н</span>
+                </div>
+                <h3 data-i18n="team_nastachka_name">Настачка</h3>
+                <span class="team-role" data-i18n="team_nastachka">SMM / Аналитика</span>
+                <span class="team-stage">analytics</span>
+                <div class="team-card__bio">
+                  <p class="team-card__desc" data-i18n="bio_nastachka_desc">Следит за дедлайнами и эффективностью контента.</p>
+                  <ul class="team-card__facts">
+                    <li><span data-i18n="bio_label_exp">Опыт</span><span data-i18n="bio_nastachka_exp">1+ год</span></li>
+                    <li><span data-i18n="bio_label_focus">Фокус</span><span data-i18n="bio_nastachka_focus">Сбор и анализ данных из социальных сетей</span></li>
+                  </ul>
+                  <div class="team-card__stack">
+                    <span class="team-card__stack-label" data-i18n="bio_label_stack">Стек</span>
+                    <div class="tech-list">
+                      <span class="tech" style="--tech:#0f9d58"><img class="tech__logo" src="./assets/tech/googlesheets.svg" alt="" loading="lazy" />Google Sheets</span>
+                      <span class="tech" style="--tech:#f6821f"><img class="tech__logo" src="./assets/tech/cloudflare.svg" alt="" loading="lazy" />Cloudflare</span>
+                      <span class="tech" style="--tech:#5282ff"><img class="tech__logo" src="./assets/tech/datalens.svg" alt="" loading="lazy" />Yandex DataLens</span>
                     </div>
                   </div>
                 </div>
@@ -703,6 +693,6 @@
       </div>
     </footer>
 
-    <script type="module" src="./src/main.js?v=16"></script>
+    <script type="module" src="./src/main.js?v=17"></script>
   </body>
 </html>

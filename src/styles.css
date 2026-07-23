@@ -817,14 +817,17 @@ textarea:focus-visible {
   min-height: 250px;
 }
 
+/* Monoline icon system: one grid, one weight, square joins. */
 .service-card__icon {
-  width: 46px;
-  height: 46px;
-  margin-bottom: 18px;
-  opacity: 0.9;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 20px;
+  color: var(--crimson);
 }
 
-.service-card__icon svg {
+.service-card__icon svg,
+.card-graphic svg {
+  display: block;
   width: 100%;
   height: 100%;
 }
@@ -861,17 +864,10 @@ textarea:focus-visible {
 
 /* Thematic line-icon shared by deliverable / architecture / case cards. */
 .card-graphic {
-  width: 42px;
-  height: 42px;
-  margin-bottom: 16px;
+  width: 32px;
+  height: 32px;
+  margin-bottom: 18px;
   color: var(--crimson);
-  opacity: 0.9;
-}
-
-.card-graphic svg {
-  display: block;
-  width: 100%;
-  height: 100%;
 }
 
 /* ── Case ───────────────────────────────────────────────── */
@@ -1448,6 +1444,43 @@ textarea:focus-visible {
     display: flex;
   }
 
+  /* Full-width sheet with comfortable tap targets, and the primary CTA that
+     the desktop bar hides at this width. */
+  .mobile-menu {
+    top: 74px;
+    right: 12px;
+    left: 12px;
+    width: auto;
+    padding: 8px;
+    border-radius: 18px;
+  }
+
+  .mobile-menu a {
+    padding: 16px 14px;
+    border-radius: 12px;
+    font-size: 13px;
+    color: var(--ink);
+  }
+
+  .mobile-menu a:active {
+    background: rgba(230, 47, 79, 0.08);
+  }
+
+  .mobile-menu__cta {
+    margin-top: 6px;
+    border-bottom: 0 !important;
+    border-radius: 999px !important;
+    color: var(--cream) !important;
+    background: var(--crimson);
+    text-align: center;
+  }
+
+  .menu-button,
+  .lang-toggle {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
   .hero__grid,
   .case-grid,
   .contact-grid {
@@ -1532,12 +1565,7 @@ textarea:focus-visible {
   }
 
   .signal-card {
-    min-height: 320px;
-    padding: 22px;
-  }
-
-  .signal-card::before {
-    height: 132px;
+    padding: 20px;
   }
 
   .loader__logo {
@@ -1550,14 +1578,44 @@ textarea:focus-visible {
     padding: 24px 18px;
   }
 
-  .signal-card__metrics,
+  .loader__code {
+    font-size: 11.5px;
+    min-height: 120px;
+  }
+
+  /* Metrics stay 3-up: they are short labels and read better in a row than
+     as three full-width blocks. */
+  .signal-card__metrics {
+    gap: 6px;
+  }
+
   .service-grid,
   .deliverables-grid,
   .architecture-map,
-  .flow-steps,
   .steps,
   .footer__grid {
     grid-template-columns: 1fr;
+  }
+
+  .flow-steps,
+  .team-flow__stages {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Comfortable touch targets throughout. */
+  .button,
+  .contact-form input,
+  .contact-form textarea {
+    min-height: 50px;
+  }
+
+  .contact-form textarea {
+    min-height: 120px;
+  }
+
+  .footer__grid {
+    gap: 14px;
+    text-align: left;
   }
 
   .service-card {
@@ -1586,22 +1644,69 @@ textarea:focus-visible {
   }
 
   .team-card {
-    padding: 24px 14px 20px;
+    padding: 22px 14px 18px;
   }
 
   .team-avatar {
-    width: 78px;
-    height: 78px;
+    width: 76px;
+    height: 76px;
+    font-size: 28px;
   }
 
+  /* No hover on touch: scaling a tapped card would clip it against its
+     neighbour, so the opened card takes the whole row instead. */
   .team-card:hover,
   .team-card:focus-within,
   .team-card.is-open {
-    transform: scale(1.02);
+    transform: none;
+  }
+
+  .team-node:has(.team-card.is-open) {
+    flex-basis: 100%;
+  }
+
+  .team-card.is-open .team-card__bio {
+    max-height: 460px;
   }
 
   .team-flow__stages {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Small phones: two team cards per row get too narrow for a name + role. */
+@media (max-width: 460px) {
+  .wrap {
+    width: min(100% - 28px, 1180px);
+  }
+
+  .team-node {
+    flex: 0 1 100%;
+  }
+
+  .team-avatar {
+    width: 84px;
+    height: 84px;
+  }
+
+  .flow-steps,
+  .team-flow__stages {
+    grid-template-columns: 1fr;
+  }
+
+  .flow-steps span::after,
+  .team-flow__stages span::after {
+    display: none;
+  }
+
+  .brand {
+    font-size: 15px;
+  }
+
+  .case-visual,
+  .case-model-image {
+    min-height: 300px;
+    height: 300px;
   }
 }
 
