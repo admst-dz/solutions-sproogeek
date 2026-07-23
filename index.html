@@ -15,6 +15,7 @@
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="google-site-verification" content="raK3WPV4oIOEu2iVzzrq5dIyvWHCpHwaajsC4akck5c" />
     <meta name="theme-color" content="#fffdeb" />
+    <link rel="icon" href="/assets/SprooGeek.svg" type="image/svg+xml" />
     <link rel="canonical" href="https://about.sproogeek.com/" />
     <link rel="alternate" href="https://about.sproogeek.com/" hreflang="ru" />
     <link rel="alternate" href="https://about.sproogeek.com/" hreflang="x-default" />
@@ -28,6 +29,8 @@
       content="Проектируем и запускаем сайты, продуктовые лендинги, 3D-конфигураторы, API и микросервисную инфраструктуру для продаж."
     />
     <meta property="og:image" content="https://about.sproogeek.com/assets/spiral-notebook-render.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="3D-рендер ежедневника Sproogeek" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="SproogeekDev - сайты, 3D-конфигураторы и backend" />
@@ -36,6 +39,7 @@
       content="Digital product studio для веб-продуктов, 3D-визуализации, backend-интеграций и production-запуска."
     />
     <meta name="twitter:image" content="https://about.sproogeek.com/assets/spiral-notebook-render.png" />
+    <meta name="twitter:image:alt" content="3D-рендер ежедневника Sproogeek" />
     <title>SproogeekDev - Digital Product Studio</title>
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -48,44 +52,50 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "name": "SproogeekDev",
-        "url": "https://about.sproogeek.com/",
-        "logo": "https://about.sproogeek.com/assets/SprooGeek.svg",
-        "image": "https://about.sproogeek.com/assets/spiral-notebook-render.png",
-        "email": "info@sproogeek.com",
-        "description": "Digital product studio: сайты, продуктовые лендинги, 3D-конфигураторы, backend и микросервисная инфраструктура для продаж.",
-        "areaServed": ["BY", "RU", "EU"],
-        "knowsAbout": [
-          "разработка сайтов",
-          "3D конфигураторы",
-          "Three.js",
-          "FastAPI",
-          "PostgreSQL",
-          "DevOps",
-          "B2B лендинги"
-        ],
-        "sameAs": ["https://about.sproogeek.com/"],
-        "offers": [
+        "@graph": [
           {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Сайты и продуктовые лендинги"
-            }
+            "@type": "Organization",
+            "@id": "https://about.sproogeek.com/#organization",
+            "name": "SproogeekDev",
+            "url": "https://about.sproogeek.com/",
+            "logo": "https://about.sproogeek.com/assets/SprooGeek.svg",
+            "image": "https://about.sproogeek.com/assets/spiral-notebook-render.png",
+            "email": "info@sproogeek.com",
+            "sameAs": ["https://www.instagram.com/sproogeek_dev/"]
           },
           {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "3D-конфигураторы"
-            }
+            "@type": "WebSite",
+            "@id": "https://about.sproogeek.com/#website",
+            "name": "SproogeekDev",
+            "alternateName": ["Sproogeek", "Sproogeek Dev", "Спругик", "Спружык"],
+            "url": "https://about.sproogeek.com/",
+            "publisher": { "@id": "https://about.sproogeek.com/#organization" },
+            "inLanguage": "ru"
           },
           {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Backend и интеграции"
+            "@type": "ProfessionalService",
+            "@id": "https://about.sproogeek.com/#studio",
+            "name": "SproogeekDev",
+            "url": "https://about.sproogeek.com/",
+            "description": "Digital product studio: сайты, продуктовые лендинги, 3D-конфигураторы, backend и микросервисная инфраструктура для продаж.",
+            "areaServed": ["BY", "RU", "EU"],
+            "knowsAbout": [
+              "разработка сайтов",
+              "3D конфигураторы",
+              "Three.js",
+              "FastAPI",
+              "PostgreSQL",
+              "DevOps",
+              "B2B лендинги"
+            ],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Услуги SproogeekDev",
+              "itemListElement": [
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Сайты и продуктовые лендинги" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "3D-конфигураторы" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Backend и интеграции" } }
+              ]
             }
           }
         ]
@@ -118,21 +128,22 @@
     <div class="cursor-light" id="cursorLight" aria-hidden="true"></div>
 
     <header class="topbar">
-      <a class="brand" href="#hero" aria-label="SproogeekDev">
+      <a class="brand page-tab" href="/" aria-label="SproogeekDev" data-page-tab="hero">
         <span class="brand__mark"><img src="./assets/SprooGeek.svg" alt="" /></span>
         <span><b>Sproogeek</b>Dev</span>
       </a>
       <nav class="nav" aria-label="Главная навигация">
-        <a href="#services" data-i18n="nav_services">Услуги</a>
-        <a href="#case" data-i18n="nav_case">Кейс</a>
-        <a href="#architecture" data-i18n="nav_architecture">Архитектура</a>
-        <a href="#team" data-i18n="nav_team">Команда</a>
-        <a href="#process" data-i18n="nav_process">Процесс</a>
-        <a href="#contact" data-i18n="nav_contact">Контакт</a>
+        <a class="page-tab" href="/services" data-page-tab="services" data-i18n="nav_services">Услуги</a>
+        <a class="page-tab" href="/case" data-page-tab="case" data-i18n="nav_case">Кейс</a>
+        <a class="page-tab" href="/architecture" data-page-tab="architecture" data-i18n="nav_architecture">Архитектура</a>
+        <a class="page-tab" href="/team" data-page-tab="team" data-i18n="nav_team">Команда</a>
+        <a class="page-tab" href="/process" data-page-tab="process" data-i18n="nav_process">Процесс</a>
+        <a class="page-tab" href="/news" data-page-tab="news" data-i18n="nav_news">Новости</a>
+        <a class="page-tab" href="/contact" data-page-tab="contact" data-i18n="nav_contact">Контакт</a>
       </nav>
       <div class="topbar__actions">
         <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch to English">EN</button>
-        <a class="nav-cta" href="#contact" data-i18n="nav_cta">Обсудить проект</a>
+        <a class="nav-cta page-tab" href="/contact" data-page-tab="contact" data-i18n="nav_cta">Обсудить проект</a>
       </div>
       <button class="menu-button" id="menuButton" type="button" aria-label="Открыть меню" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -140,13 +151,13 @@
     </header>
 
     <aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
-      <a href="#services" data-i18n="nav_services">Услуги</a>
-      <a href="#case" data-i18n="nav_case">Кейс</a>
-      <a href="#architecture" data-i18n="nav_architecture">Архитектура</a>
-      <a href="#team" data-i18n="nav_team">Команда</a>
-      <a href="#process" data-i18n="nav_process">Процесс</a>
-      <a href="#contact" data-i18n="nav_contact">Контакт</a>
-      <a class="mobile-menu__cta" href="#contact" data-i18n="nav_cta">Обсудить проект</a>
+      <a class="page-tab" href="/services" data-page-tab="services" data-i18n="nav_services">Услуги</a>
+      <a class="page-tab" href="/case" data-page-tab="case" data-i18n="nav_case">Кейс</a>
+      <a class="page-tab" href="/architecture" data-page-tab="architecture" data-i18n="nav_architecture">Архитектура</a>
+      <a class="page-tab" href="/team" data-page-tab="team" data-i18n="nav_team">Команда</a>
+      <a class="page-tab" href="/process" data-page-tab="process" data-i18n="nav_process">Процесс</a>
+      <a class="page-tab" href="/news" data-page-tab="news" data-i18n="nav_news">Новости</a>
+      <a class="page-tab" href="/contact" data-page-tab="contact" data-i18n="nav_contact">Контакт</a>
     </aside>
 
     <main>
@@ -160,8 +171,8 @@
               покупатель видит продукт до заказа, а команда получает понятную операционную систему.
             </p>
             <div class="hero__actions">
-              <a class="button button--primary" href="#case" data-i18n="hero_cta1">Смотреть кейс</a>
-              <a class="button button--secondary" href="#services" data-i18n="hero_cta2">Что делаем</a>
+              <a class="button button--primary page-tab" href="/case" data-page-tab="case" data-i18n="hero_cta1">Смотреть кейс</a>
+              <a class="button button--secondary page-tab" href="/services" data-page-tab="services" data-i18n="hero_cta2">Что делаем</a>
             </div>
           </div>
           <div class="hero__panel reveal is-visible delay-1">
@@ -183,7 +194,7 @@
         <div class="wrap">
           <div class="section-head reveal">
             <p class="eyebrow">Services</p>
-            <h2 data-i18n="services_title">Закрываем весь путь от идеи до production.</h2>
+            <h1 data-i18n="services_title">Закрываем весь путь от идеи до production.</h1>
             <p class="lead" data-i18n="services_lead">
               Берем на себя продуктовую структуру, интерфейсы, API, 3D-визуализацию и запуск,
               сохраняя архитектуру понятной для дальнейшей поддержки.
@@ -244,7 +255,7 @@
         <div class="wrap case-grid">
           <div class="case-copy reveal">
             <p class="eyebrow">Real case</p>
-            <h2 data-i18n="case_title">Sproogeek 3D Configurator</h2>
+            <h1 data-i18n="case_title">Sproogeek 3D Configurator</h1>
             <p class="lead" data-i18n="case_lead">
               B2B-сайт продаж сувенирной и полиграфической продукции: ежедневники, скетчбуки,
               термосы и powerbank с кастомизацией прямо в браузере.
@@ -304,7 +315,7 @@
         <div class="wrap">
           <div class="section-head reveal">
             <p class="eyebrow">Architecture</p>
-            <h2 data-i18n="arch_title">Как устроен проект, который можно масштабировать.</h2>
+            <h1 data-i18n="arch_title">Как устроен проект, который можно масштабировать.</h1>
             <p class="lead" data-i18n="arch_lead">
               Ниже структура для реального кейса или будущего продукта. Заменишь названия сервисов,
               стек и поток данных на свои - секция уже готова как техническая витрина.
@@ -355,18 +366,6 @@
               <ul><li>Docker</li><li>Traefik</li><li>GitHub Actions</li></ul>
             </article>
           </div>
-
-          <div class="card architecture-flow reveal">
-            <span class="flow-label">Order flow</span>
-            <div class="flow-steps">
-              <span data-i18n="flow_1">Клиент</span>
-              <span data-i18n="flow_2">3D-конфиг</span>
-              <span data-i18n="flow_3">API заказа</span>
-              <span data-i18n="flow_4">Рендер</span>
-              <span data-i18n="flow_5">PDF-техкарта</span>
-              <span data-i18n="flow_6">Производство</span>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -374,14 +373,37 @@
         <div class="wrap">
           <div class="section-head reveal">
             <p class="eyebrow">Team</p>
-            <h2 data-i18n="team_title">Команда, которая собирает продукт.</h2>
+            <h1 data-i18n="team_title">Команда, которая собирает продукт.</h1>
             <p class="lead" data-i18n="team_lead">Каждый участник — узел в нашем пайплайне. Вместе мы проектируем, разрабатываем и выпускаем продукты.</p>
           </div>
+
+          <article class="team-spotlight reveal" id="teamSpotlight" aria-live="polite">
+            <div class="team-spotlight__visual">
+              <div class="team-spotlight__avatar" data-spotlight-avatar style="--avatar-bg: linear-gradient(135deg, #667eea, #764ba2)">
+                <img class="team-spotlight__img" src="./assets/team/vladislav.jpg" alt="Владислав" />
+                <span class="team-spotlight__fallback">В</span>
+              </div>
+            </div>
+            <div class="team-spotlight__content">
+              <span class="team-spotlight__stage" data-spotlight-stage>design</span>
+              <h3 data-spotlight-name>Владислав</h3>
+              <p class="team-spotlight__role" data-spotlight-role>Дизайнер</p>
+              <p class="team-spotlight__desc" data-spotlight-desc>Отвечает за визуальный стиль продукта — от концепции до финальных макетов.</p>
+              <ul class="team-spotlight__facts" data-spotlight-facts>
+                <li><span>Опыт</span><span>3+ года в UI/UX</span></li>
+                <li><span>Фокус</span><span>Дизайн-система и пользовательский интерфейс</span></li>
+              </ul>
+              <div class="team-spotlight__stack" data-spotlight-stack>
+                <span class="tech" style="--tech:#a259ff"><img class="tech__logo" src="./assets/tech/figma.svg" alt="" loading="lazy" />Figma</span>
+                <span class="tech" style="--tech:#2bb673"><img class="tech__logo" src="./assets/tech/coreldraw.svg" alt="" loading="lazy" />CorelDraw</span>
+              </div>
+            </div>
+          </article>
 
           <div class="team-pipeline">
 
             <div class="team-node reveal">
-              <div class="card team-card">
+              <div class="card team-card is-open" data-team-stage="design" tabindex="0">
                 <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #667eea, #764ba2)">
                   <img class="team-avatar__img" src="./assets/team/vladislav.jpg?v=18" alt="Владислав" loading="lazy" onerror="this.remove()" />
                   <span class="team-avatar__fallback">В</span>
@@ -407,7 +429,7 @@
             </div>
 
             <div class="team-node reveal delay-1">
-              <div class="card team-card">
+              <div class="card team-card" data-team-stage="manage" tabindex="0">
                 <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #40f0c7, #4b8dff)">
                   <img class="team-avatar__img" src="./assets/team/andrey.jpg?v=18" alt="Андрей" loading="lazy" onerror="this.remove()" />
                   <span class="team-avatar__fallback">А</span>
@@ -432,7 +454,7 @@
             </div>
 
             <div class="team-node reveal delay-2">
-              <div class="card team-card">
+              <div class="card team-card" data-team-stage="marketing" tabindex="0">
                 <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #f8c46a, #ff8a3d)">
                   <img class="team-avatar__img" src="./assets/team/nikita.jpg?v=18" alt="Никита" loading="lazy" onerror="this.remove()" />
                   <span class="team-avatar__fallback">Н</span>
@@ -459,7 +481,7 @@
             </div>
 
             <div class="team-node reveal delay-3">
-              <div class="card team-card">
+              <div class="card team-card" data-team-stage="backend" tabindex="0">
                 <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #4b8dff, #667eea)">
                   <img class="team-avatar__img" src="./assets/team/pavel.jpg?v=18" alt="Павел" loading="lazy" onerror="this.remove()" />
                   <span class="team-avatar__fallback">П</span>
@@ -486,7 +508,7 @@
             </div>
 
             <div class="team-node reveal">
-              <div class="card team-card">
+              <div class="card team-card" data-team-stage="frontend" tabindex="0">
                 <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #ff5c9f, #ff8a3d)">
                   <img class="team-avatar__img" src="./assets/team/prohor.jpg?v=18" alt="Прохор" loading="lazy" onerror="this.remove()" />
                   <span class="team-avatar__fallback">П</span>
@@ -513,7 +535,7 @@
             </div>
 
             <div class="team-node reveal delay-1">
-              <div class="card team-card">
+              <div class="card team-card" data-team-stage="creative" tabindex="0">
                 <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #ff8a3d, #e62f4f)">
                   <img class="team-avatar__img" src="./assets/team/alexandr.jpg?v=18" alt="Александр" loading="lazy" onerror="this.remove()" />
                   <span class="team-avatar__fallback">А</span>
@@ -540,9 +562,9 @@
             </div>
 
             <div class="team-node reveal delay-2">
-              <div class="card team-card">
+              <div class="card team-card" data-team-stage="analytics" tabindex="0">
                 <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #5282ff, #2f213f)">
-                  <img class="team-avatar__img" src="assets/team/nastachka.jpg?v=18" alt="Настачка" loading="lazy" onerror="this.remove()" />
+                  <img class="team-avatar__img team-avatar__img--nastachka" src="./assets/team/nastachka.jpg?v=18" alt="Настачка" loading="lazy" onerror="this.remove()" />
                   <span class="team-avatar__fallback">Н</span>
                 </div>
                 <h3 data-i18n="team_nastachka_name">Настачка</h3>
@@ -567,7 +589,7 @@
             </div>
 
             <div class="team-node reveal delay-2">
-              <div class="card team-card">
+              <div class="card team-card" data-team-stage="smm" tabindex="0">
                 <div class="team-avatar" style="--avatar-bg: linear-gradient(135deg, #11998e, #40f0c7)">
                   <img class="team-avatar__img" src="./assets/team/ivan.jpg?v=18" alt="Иван" loading="lazy" onerror="this.remove()" />
                   <span class="team-avatar__fallback">И</span>
@@ -594,16 +616,7 @@
             </div>
           </div>
 
-          <div class="card team-flow reveal">
-            <span class="flow-label">Team pipeline</span>
-            <div class="team-flow__stages">
-              <span>Design</span>
-              <span>Plan</span>
-              <span>Develop</span>
-              <span>Test</span>
-              <span>Deploy</span>
-            </div>
-          </div>
+
         </div>
       </section>
 
@@ -611,7 +624,7 @@
         <div class="wrap">
           <div class="section-head reveal">
             <p class="eyebrow">Process</p>
-            <h2 data-i18n="process_title">Работаем короткими инженерными итерациями.</h2>
+            <h1 data-i18n="process_title">Работаем короткими инженерными итерациями.</h1>
           </div>
           <div class="steps">
             <article class="step reveal">
@@ -638,11 +651,26 @@
         </div>
       </section>
 
+      <section class="section news-section" id="news">
+        <div class="wrap news-layout">
+          <div class="section-head reveal">
+            <p class="eyebrow">News</p>
+            <h1 data-i18n="news_title">Новости</h1>
+          </div>
+          <div class="news-feed reveal delay-1" id="instagramNews" aria-live="polite">
+            <div class="news-feed__status" data-news-status>Загружаем новости из Instagram…</div>
+          </div>
+          <noscript>
+            <p class="lead">Свежие новости SproogeekDev доступны в Instagram: https://www.instagram.com/sproogeek_dev/</p>
+          </noscript>
+        </div>
+      </section>
+
       <section class="section contact-section" id="contact">
         <div class="wrap contact-grid">
           <div class="reveal">
             <p class="eyebrow">Contact</p>
-            <h2 data-i18n="contact_title">Давайте соберем проект, который можно показать рынку.</h2>
+            <h1 data-i18n="contact_title">Давайте соберем проект, который можно показать рынку.</h1>
             <p class="lead" data-i18n="contact_lead">
               Опишите задачу, формат продукта и желаемый срок. Ответим с понятным следующим шагом.
             </p>
@@ -684,7 +712,7 @@
 
     <footer class="footer">
       <div class="wrap footer__grid">
-        <a class="brand" href="#hero">
+        <a class="brand page-tab" href="/" data-page-tab="hero">
           <span class="brand__mark"><img src="./assets/SprooGeek.svg" alt="" /></span>
           <span><b>Sproogeek</b>Dev</span>
         </a>
