@@ -37,10 +37,26 @@ jobs:
             -e "ssh -p ${{ secrets.SSH_PORT }}" \
             ./ "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}"
 
-      # Picks up backend changes. Requires the sudoers rule from backend/README.md.
+      # Picks up backend changes. When the deploy user is not root this needs the
+      # NOPASSWD sudoers rule from backend/README.md; `sudo -n` fails fast instead
+      # of hanging on a password prompt that an SSH session cannot answer.
       - name: Restart lead relay
         run: |
-          ssh -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" \
-            "cd ${{ secrets.DEPLOY_PATH }}/backend \
-             && ./.venv/bin/pip install -q -r requirements.txt \
-             && sudo systemctl restart sproogeek-leads"
+          ssh -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" bash -se <<'REMOTE'
+            set -euo pipefail
+            cd "${{ secrets.DEPLOY_PATH }}/backend"
+
+            if [ -x ./.venv/bin/pip ]; then
+              ./.venv/bin/pip install -q -r requirements.txt
+            else
+              echo "::warning::.venv missing — run the one-time setup from backend/README.md"
+            fi
+
+            if [ "$(id -u)" -eq 0 ]; then
+              systemctl restart sproogeek-leads
+            else
+              sudo -n systemctl restart sproogeek-leads
+            fi
+
+            systemctl is-active --quiet sproogeek-leads && echo "relay is active"
+          REMOTE
