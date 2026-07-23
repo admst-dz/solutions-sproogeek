@@ -1,32 +1,33 @@
 """SproogeekDev lead relay.
 
-Receives contact-form submissions from the site and forwards them to Telegram.
+Receives contact-form submissions from the site and emails them via Yandex SMTP.
 
-The bot token lives ONLY here (server side) — never in the browser, otherwise
-anyone could read it from the page source and take over the bot.
-
-Env vars (see .env.example):
-    TELEGRAM_BOT_TOKEN   required, from @BotFather
-    TELEGRAM_CHAT_ID     target chat, default "@sproogeek_dev"
-    ALLOWED_ORIGINS      comma-separated origins allowed to POST
+Credentials live ONLY in the environment (see .env.example) — never in source
+and never in the browser, otherwise anyone could read them from the page.
 """
 
-import html
 import os
+import smtplib
 import time
 from collections import defaultdict, deque
+from email.message import EmailMessage
+from email.utils import formataddr
 from typing import Dict, Optional
 
-import httpx
 from fastapi import FastAPI, HTTPException, Request
+from fastapi.concurrency import run_in_threadpool
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, EmailStr, Field
 
-BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
-CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "@sproogeek_dev").strip()
-ALLOWED_ORIGINS = [o.strip() for o in os.environ.get("ALLOWED_ORIGINS", "").split(",") if o.strip()]
+SMTP_HOST = os.environ.get("SMTP_HOST", "smtp.yandex.ru")
+SMTP_PORT = int(os.environ.get("SMTP_PORT", "587"))
+SMTP_USERNAME = os.environ.get("SMTP_USERNAME", "").strip()
+SMTP_PASSWORD = os.environ.get("SMTP_PASSWORD", "")
+SMTP_USE_TLS = os.environ.get("SMTP_USE_TLS", "true").strip().lower() in {"1", "true", "yes"}
+SMTP_FROM = os.environ.get("SMTP_FROM", SMTP_USERNAME).strip()
+FEEDBACK_TO = os.environ.get("FEEDBACK_TO", SMTP_USERNAME).strip()
 
-TELEGRAM_API = "https://api.telegram.org/bot{token}/sendMessage"
+ALLOWED_ORIGINS = [o.strip() for o in os.environ.get("ALLOWED_ORIGINS", "").split(",") if o.strip()]
 
 # Light in-memory rate limit: max 5 submissions per IP per 10 minutes.
 RATE_LIMIT = 5
@@ -63,26 +64,57 @@ def _rate_limited(ip: str) -> bool:
     return False
 
 
-def _format(lead: Lead) -> str:
-    esc = html.escape
-    return (
-        "<b>Новая заявка — sproogeek.com</b>\n\n"
-        f"<b>Имя:</b> {esc(lead.name)}\n"
-        f"<b>Email:</b> {esc(lead.email)}\n"
-        f"<b>Телефон:</b> {esc(lead.phone)}\n\n"
-        f"<b>О проекте:</b>\n{esc(lead.message)}"
+def _build_message(lead: Lead) -> EmailMessage:
+    msg = EmailMessage()
+    msg["Subject"] = f"Заявка с сайта — {lead.name}"
+    # From must stay the authenticated mailbox or Yandex rejects the message.
+    msg["From"] = formataddr(("SproogeekDev site", SMTP_FROM))
+    msg["To"] = FEEDBACK_TO
+    # So you can just hit "Reply" and answer the client directly.
+    msg["Reply-To"] = formataddr((lead.name, str(lead.email)))
+    msg.set_content(
+        "Новая заявка с about.sproogeek.com\n\n"
+        f"Имя:     {lead.name}\n"
+        f"Email:   {lead.email}\n"
+        f"Телефон: {lead.phone}\n\n"
+        "О проекте:\n"
+        f"{lead.message}\n"
     )
+    return msg
+
+
+def _send(msg: EmailMessage) -> None:
+    """Blocking SMTP send — call through run_in_threadpool."""
+    if SMTP_USE_TLS:
+        # Port 587: plain connection upgraded via STARTTLS.
+        with smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=20) as server:
+            server.ehlo()
+            server.starttls()
+            server.ehlo()
+            server.login(SMTP_USERNAME, SMTP_PASSWORD)
+            server.send_message(msg)
+    else:
+        # Port 465: TLS from the first byte.
+        with smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT, timeout=20) as server:
+            server.login(SMTP_USERNAME, SMTP_PASSWORD)
+            server.send_message(msg)
 
 
 @app.get("/api/health")
 async def health() -> dict:
-    return {"ok": True, "configured": bool(BOT_TOKEN)}
+    return {
+        "ok": True,
+        "configured": bool(SMTP_USERNAME and SMTP_PASSWORD),
+        "host": SMTP_HOST,
+        "port": SMTP_PORT,
+        "tls": SMTP_USE_TLS,
+    }
 
 
 @app.post("/api/lead")
 async def create_lead(lead: Lead, request: Request) -> dict:
-    if not BOT_TOKEN:
-        raise HTTPException(status_code=503, detail="Telegram bot is not configured")
+    if not (SMTP_USERNAME and SMTP_PASSWORD):
+        raise HTTPException(status_code=503, detail="Mail transport is not configured")
 
     # Silently accept honeypot hits so bots do not learn they were filtered.
     if lead.botcheck:
@@ -92,21 +124,12 @@ async def create_lead(lead: Lead, request: Request) -> dict:
     if _rate_limited(client_ip):
         raise HTTPException(status_code=429, detail="Too many requests, try again later")
 
-    payload = {
-        "chat_id": CHAT_ID,
-        "text": _format(lead),
-        "parse_mode": "HTML",
-        "disable_web_page_preview": True,
-    }
-
     try:
-        async with httpx.AsyncClient(timeout=10) as client:
-            response = await client.post(TELEGRAM_API.format(token=BOT_TOKEN), json=payload)
-    except httpx.HTTPError:
-        raise HTTPException(status_code=502, detail="Telegram is unreachable")
-
-    if response.status_code != 200 or not response.json().get("ok"):
-        # Never echo the Telegram body back to the browser — it can leak config.
-        raise HTTPException(status_code=502, detail="Telegram rejected the message")
+        await run_in_threadpool(_send, _build_message(lead))
+    except smtplib.SMTPAuthenticationError:
+        # Never leak credential details to the browser.
+        raise HTTPException(status_code=502, detail="Mail authentication failed")
+    except (smtplib.SMTPException, OSError):
+        raise HTTPException(status_code=502, detail="Could not deliver the message")
 
     return {"ok": True}

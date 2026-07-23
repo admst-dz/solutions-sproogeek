@@ -1,9 +1,9 @@
 import * as THREE from 'three';
 
-const CONTACT_EMAIL = 'info@sproogeeek.com';
-// Заявки уходят в Telegram (@sproogeek_dev) через собственный Python-бэкенд
-// в папке /backend. Токен бота живёт только на сервере — в браузер он не
-// попадает, иначе им мог бы воспользоваться кто угодно.
+const CONTACT_EMAIL = 'info@sproogeek.com';
+// Заявки уходят на почту info@sproogeek.com через собственный Python-бэкенд
+// в папке /backend (Yandex SMTP). Пароль живёт только на сервере — в браузер
+// он не попадает, иначе им мог бы воспользоваться кто угодно.
 // Пока бэкенд не поднят — форма откроет почтовый клиент (mailto).
 const LEAD_ENDPOINT = '/api/lead';
 const FORM_STATUS_TEXT = {
