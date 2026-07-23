@@ -40,23 +40,34 @@ jobs:
       # Picks up backend changes. When the deploy user is not root this needs the
       # NOPASSWD sudoers rule from backend/README.md; `sudo -n` fails fast instead
       # of hanging on a password prompt that an SSH session cannot answer.
+      # Static sync above is the critical part and has already succeeded by now,
+      # so backend hiccups must not fail the deploy — they warn instead.
       - name: Restart lead relay
+        continue-on-error: true
         run: |
           ssh -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" bash -se <<'REMOTE'
-            set -euo pipefail
-            cd "${{ secrets.DEPLOY_PATH }}/backend"
+            set -uo pipefail
+            cd "${{ secrets.DEPLOY_PATH }}/backend" 2>/dev/null || {
+              echo "::warning::backend directory not found — skipping relay restart"; exit 0; }
 
             if [ -x ./.venv/bin/pip ]; then
-              ./.venv/bin/pip install -q -r requirements.txt
+              ./.venv/bin/pip install -q -r requirements.txt \
+                || echo "::warning::pip install failed (check .venv ownership vs the deploy user)"
             else
               echo "::warning::.venv missing — run the one-time setup from backend/README.md"
             fi
 
             if [ "$(id -u)" -eq 0 ]; then
-              systemctl restart sproogeek-leads
+              systemctl restart sproogeek-leads || echo "::warning::relay restart failed"
+            elif sudo -n true 2>/dev/null; then
+              sudo -n systemctl restart sproogeek-leads || echo "::warning::relay restart failed"
             else
-              sudo -n systemctl restart sproogeek-leads
+              echo "::warning::no passwordless sudo — add the sudoers rule from backend/README.md"
             fi
 
-            systemctl is-active --quiet sproogeek-leads && echo "relay is active"
+            if systemctl is-active --quiet sproogeek-leads; then
+              echo "relay is active"
+            else
+              echo "::warning::relay is not active — check: journalctl -u sproogeek-leads"
+            fi
           REMOTE
