@@ -1,10 +1,9 @@
 import * as THREE from 'three';
 
-const CONTACT_EMAIL = 'info@sproogeek.com';
 // Заявки уходят на почту info@sproogeek.com через собственный Python-бэкенд
 // в папке /backend (Yandex SMTP). Пароль живёт только на сервере — в браузер
 // он не попадает, иначе им мог бы воспользоваться кто угодно.
-// Пока бэкенд не поднят — форма откроет почтовый клиент (mailto).
+// Почтовый клиент не открываем никогда: форма всегда отправляет через бэкенд.
 const LEAD_ENDPOINT = '/api/lead';
 const FORM_STATUS_TEXT = {
   sending: { ru: 'Отправляем…', en: 'Sending…' },
@@ -369,26 +368,19 @@ function setupContactForm() {
         form.reset();
       } else if (response.status === 429) {
         setFormStatus(statusEl, 'rateLimited');
-      } else if (response.status === 503 || response.status === 404) {
-        // Backend not deployed yet → fall back to the mail client.
-        openMailFallback(data);
-        setFormStatus(statusEl, '');
       } else {
+        // Never hand the user off to a mail client — the form always sends
+        // through the backend. Surface the failure instead so it gets fixed.
         setFormStatus(statusEl, 'error');
+        console.error('Lead submit failed:', response.status, await response.text().catch(() => ''));
       }
     } catch (error) {
-      // Network failure (backend down / not reachable) → mail client fallback.
-      openMailFallback(data);
-      setFormStatus(statusEl, '');
+      setFormStatus(statusEl, 'error');
+      console.error('Lead submit network error:', error);
     } finally {
       if (submitButton) submitButton.disabled = false;
     }
   });
-}
-
-function openMailFallback(data) {
-  const subject = encodeURIComponent('Project request - SproogeekDev');
-  window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${buildMailBody(data)}`;
 }
 
 function setFormStatus(element, state) {
@@ -400,16 +392,6 @@ function setFormStatus(element, state) {
   } else {
     delete element.dataset.state;
   }
-}
-
-function buildMailBody(data) {
-  const name = String(data.get('name') || '').trim();
-  const email = String(data.get('email') || '').trim();
-  const phone = String(data.get('phone') || '').trim();
-  const message = String(data.get('message') || '').trim();
-  const nameLabel = currentLang === 'en' ? 'Name' : 'Имя';
-  const phoneLabel = currentLang === 'en' ? 'Phone' : 'Телефон';
-  return encodeURIComponent(`${nameLabel}: ${name}\nEmail: ${email}\n${phoneLabel}: ${phone}\n\n${message}`);
 }
 
 function setupLanguageToggle() {
