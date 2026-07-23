@@ -23,10 +23,24 @@ jobs:
 
       - name: Sync files to server
         run: |
+          # NOTE: --delete removes anything on the server that is not in the repo.
+          # backend/.env and backend/.venv are gitignored, so they MUST be excluded
+          # here or every deploy would wipe the mail credentials and the virtualenv.
           rsync -az --delete \
             --exclude '.git' \
             --exclude '.github' \
             --exclude '.idea' \
             --exclude 'node_modules' \
+            --exclude 'backend/.env' \
+            --exclude 'backend/.venv' \
+            --exclude 'backend/__pycache__' \
             -e "ssh -p ${{ secrets.SSH_PORT }}" \
             ./ "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}"
+
+      # Picks up backend changes. Requires the sudoers rule from backend/README.md.
+      - name: Restart lead relay
+        run: |
+          ssh -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" \
+            "cd ${{ secrets.DEPLOY_PATH }}/backend \
+             && ./.venv/bin/pip install -q -r requirements.txt \
+             && sudo systemctl restart sproogeek-leads"
